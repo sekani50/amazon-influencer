@@ -27,7 +27,7 @@ const SideNav = ({ isNav, setisNav }) => {
         className="px-4 py-3 sm:px-6 sm:py-4 flex flex-col relative items-center h-full w-[250px] cursor-pointer shadow-md bg-white"
       >
         <div className="my-1 justify-center  flex flex-col w-full ">
-            <div className="uppercase text-[#109CF1] font-medium my-3 text-[15px] sm:text-lg">Amz</div>
+            <div className="uppercase text-[#005ABC] font-medium my-3 text-[15px] sm:text-lg">Amz</div>
 
             <div className="grid w-full items-center my-4 gap-2 grid-cols-6">
                 <div className="rounded-full h-[30px] w-[30px]">
@@ -44,7 +44,7 @@ const SideNav = ({ isNav, setisNav }) => {
             to="/dashboard"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
               pathname === "/dashboard"
-                ? "bg-[#109CF1]  rounded-lg text-white"
+                ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
           >
@@ -56,7 +56,7 @@ const SideNav = ({ isNav, setisNav }) => {
             to="/subscription"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
               pathname === "/subscription"
-                ? "bg-[#109CF1]  rounded-lg text-white"
+                ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
           >
@@ -65,9 +65,10 @@ const SideNav = ({ isNav, setisNav }) => {
           </Link>
 
           <Link
+          to="/setting"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
               pathname === "/setting"
-                ? "bg-[#109CF1]  rounded-lg text-white"
+                ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
           >

@@ -7,7 +7,7 @@ const TopNav = ({setisNav, isNav}) => {
     <>
     <div
    
-    className={`right min-[1024px]:float-right bg-white border-b border-gray-200  py-8 px-6 flex justify-between items-center `}>
+    className={`right min-[1024px]:float-right bg-white border-b border-gray-200 px-3 py-3 sm:py-8 sm:px-6 flex justify-between items-center `}>
         <div
         onClick={() => {
             setisNav(!isNav)

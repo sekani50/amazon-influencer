@@ -1,11 +1,18 @@
 import React from "react";
 import Container from "../container/container";
 import profile from "../../assets/png/hijaby.jpg";
-import {IoIosArrowRoundBack} from 'react-icons/io5'
+import {IoIosArrowRoundBack} from 'react-icons/io'
+
+import BarChart from "./chart/chart";
+import SingularCard from "./singleproductcard/singularCard";
+
 const RecordDetail = () => {
+
+
+
     return (
        <Container>
-        <div className="w-full space-y-3 sm:space-y-4 h-full">
+        <div className="w-full px-2  sm:px-6 space-y-4 sm:space-y-7 py-3 sm:py-4 h-full">
             <div className="flex space-x-2 items-center text-[12px] sm:text-sm text-gray-500">
             <IoIosArrowRoundBack className="text-[20px]"/>
             <span>Back</span>
@@ -23,7 +30,12 @@ const RecordDetail = () => {
                 </div>
             </div>
 
-
+          
+            <SingularCard/>
+            <div className="w-full mx-auto h-[320px]">
+          
+            <BarChart/>
+            </div>
 
         </div>
        </Container>

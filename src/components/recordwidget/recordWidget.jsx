@@ -2,10 +2,16 @@ import React from "react";
 import profile from "../../assets/png/hijaby.jpg";
 import VideoButton from "./buttonmodals/videoButton";
 import ProductButton from "./buttonmodals/productButton";
+import { useNavigate } from "react-router-dom";
 const RecordWidget = ({image, name, views, active, commission, tab, sales}) => {
+  const navigate = useNavigate()
     return (
         <div className="bg-white space-y-2 sm:space-y-3 w-full">
-          <div className="w-full items-center  px-3 py-3 grid grid-cols-9 gap-2 border border-gray-300 rounded-sm">
+          <div
+          onClick={() => {
+            navigate("/product/1")
+          }}
+          className="w-full items-center  px-3 py-3 grid grid-cols-9 gap-2 border border-gray-300 rounded-sm">
             <div className="grid grid-cols-6 items-center col-span-3">
               <div className="rounded-full h-[30px] w-[30px] sm:h-[35px] sm:w-[35px]">
                 <img

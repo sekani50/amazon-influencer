@@ -3,11 +3,11 @@ import "./index.css";
 import { Toaster } from "react-hot-toast";
 import Scrolltotop from "./components/UI/ScrollToTop";
 // import { RequireAuth } from "./Utils/RequireAuth";
-import { Dashboard, Login, Register } from "./Pages";
+import { Dashboard, Login, RecordDetail, Register, Settings, SubPayment, Subscription,  } from "./Pages";
 
 const App = () => {
   return (
-    <div className="w-full h-full text-sm text-[16px] font text-zinc-700">
+    <div className="w-full h-full text-sm sm:text-[15px] font text-zinc-700">
       <div>
         <Toaster
           toastOptions={{
@@ -40,6 +40,10 @@ const App = () => {
           <Route exact path="/" element={<Login />} />
           {/*    LANDING PAGE */}
           <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/product/:id" element={<RecordDetail />} />
+          <Route exact path="/setting" element={<Settings />} />
+          <Route exact path="/subscription" element={<Subscription />} />
+          <Route exact path="/payment" element={<SubPayment />} />
           {/**Protected routes */}
         </Routes>
       </Router>

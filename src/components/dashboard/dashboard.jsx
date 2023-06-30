@@ -8,7 +8,7 @@ const Dashboard = () => {
   const [tab, setTab] = useState('Videos')
   return (
     <Container>
-      <div className="w-full h-full space-y-4 sm:space-y-6 py-4">
+      <div className="w-full h-full px-2  sm:px-6 space-y-4 sm:space-y-6 py-4">
         <AnalysisCard />
 
         <div className="border-b-2 px-2 border-gray-300 w-full flex items-center ">
@@ -19,7 +19,7 @@ const Dashboard = () => {
                 setTab('Videos')
               }}
               className={`py-2 cursor-pointer ${
-                active === 0 ? "border-b-[4px] border-[#109CF1] font-bold" : "font-semibold text-gray-500"
+                active === 0 ? "border-b-[4px] border-[#005ABC] font-bold" : "font-semibold text-gray-500"
               }`}
             >
               Videos
@@ -30,7 +30,7 @@ const Dashboard = () => {
                 setTab('Products')
               }}
               className={`py-2 cursor-pointer ${
-                active === 1 ? "border-b-[4px] border-[#109CF1] font-bold" : "font-semibold text-gray-500"
+                active === 1 ? "border-b-[4px] border-[#005ABC] font-bold" : "font-semibold text-gray-500"
               }`}
             >
               Products

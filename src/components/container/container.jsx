@@ -8,7 +8,7 @@ const Container = ({children}) => {
         <TopNav isNav={isNav} setisNav={setisNav}  />
         
         
-        <div className="right min-[1010px]:float-right bg-gray-50 px-2  sm:px-6">{children}</div>
+        <div className="right min-[1010px]:float-right bg-gray-50 ">{children}</div>
         <SideNav isNav={isNav} setisNav={setisNav}/>
     </div>
     )

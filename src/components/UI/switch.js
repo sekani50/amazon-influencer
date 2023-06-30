@@ -10,7 +10,7 @@ const Switch = () => {
                setToggle(!isToggled)
               }}
               className={`${
-                isToggled ? "bg-[#01C38D]" : "bg-gray-400"
+                isToggled ? "bg-[#005CF1]" : "bg-gray-400"
               } md:h-6 h-4 md:w-14 w-12  rounded-2xl p-2`}
             >
               <div
@@ -19,7 +19,7 @@ const Switch = () => {
                 }}
                 className={`${
                   isToggled ? "translate-x-6" : "translate-x-[-8px]"
-                } transform duration-300  md:h-6 h-4 md:w-6 w-4 mt-[-8px] bg-[#132D46] rounded-full`}
+                } transform duration-300  md:h-6 h-4 md:w-6 w-4 mt-[-8px] bg-white rounded-full`}
               ></div>
             </div>
           </div>
