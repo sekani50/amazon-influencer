@@ -6,15 +6,15 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
-  const [loading, setloading] = useState(false)
+  const [loading] = useState(false)
 
 
   const handleSubmit = () => {
-    const payload = {
+    // const payload = {
        
-        email,
-        password
-    }
+    //     email,
+    //     password
+    // }
     navigate("/dashboard")
   };
   return (

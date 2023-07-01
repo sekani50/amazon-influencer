@@ -1,9 +1,10 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, } from "react-router-dom";
 import { BiHome, BiLogOutCircle } from "react-icons/bi";
 import { BsCalendar2Minus } from "react-icons/bs";
 import profile from "../../assets/png/hijaby.jpg";
 import { IoSettingsOutline } from "react-icons/io5";
+import { AiOutlineUser } from "react-icons/ai";
 
 const SideNav = ({ isNav, setisNav }) => {
   const { pathname } = useLocation();
@@ -58,6 +59,17 @@ const SideNav = ({ isNav, setisNav }) => {
             <span>Dashboard</span>
           </Link>
 
+          <Link
+            to="/user-management"
+            className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
+              pathname.toLocaleLowerCase().includes("user-management")
+                ? "bg-[#005ABC]  rounded-lg text-white"
+                : "text-gray-600"
+            } `}
+          >
+            <AiOutlineUser className="text-[25px] " />
+            <span>User Management</span>
+          </Link>
           <Link
             to="/subscription"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${

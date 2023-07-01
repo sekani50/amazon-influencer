@@ -7,7 +7,7 @@ const SubPayment = () => {
     const [cardnumber, setCardNumber] = useState()
     const [expirydate, setExpirydate] = useState()
     const [cvv, setCvv] = useState()
-    const [loading, setLoading] = useState(false)
+    const [loading] = useState(false)
   return (
     <Container>
       <div className="w-full px-2  sm:px-6 space-y-4 sm:space-y-7 bg-white py-3 sm:py-4 h-full">

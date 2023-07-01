@@ -4,7 +4,7 @@ import Profile from "../manageaccount/profile";
 import Account from "../manageaccount/account";
 const Settings = () => {
   const [active, setactive] = useState(1);
-  const [tab, setTab] = useState("Profile");
+  // const [tab, setTab] = useState("Profile");
 
 
   return (
@@ -15,7 +15,7 @@ const Settings = () => {
             <span
               onClick={() => {
                 setactive(0);
-                setTab("Profile");
+                // setTab("Profile");
               }}
               className={`py-2 cursor-pointer ${
                 active === 0
@@ -28,7 +28,7 @@ const Settings = () => {
             <span
               onClick={() => {
                 setactive(1);
-                setTab("Account");
+                // setTab("Account");
               }}
               className={`py-2 cursor-pointer ${
                 active === 1

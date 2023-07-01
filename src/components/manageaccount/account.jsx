@@ -6,7 +6,7 @@ const Account = () => {
     const [curpassword, setcurPassword] = useState()
     const [newpassword, setnewpassword] = useState()
     const [confirmPassword, setconfirmPassword] = useState()
-    const [loading, setLoading] = useState(false)
+    const [loading] = useState(false)
 
     
   const handleSubmit = () => {}

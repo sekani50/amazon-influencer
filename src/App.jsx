@@ -3,7 +3,16 @@ import "./index.css";
 import { Toaster } from "react-hot-toast";
 import Scrolltotop from "./components/UI/ScrollToTop";
 // import { RequireAuth } from "./Utils/RequireAuth";
-import { Dashboard, Login, RecordDetail, Register, Settings, SubPayment, Subscription,  } from "./Pages";
+import {
+  Dashboard,
+  Login,
+  RecordDetail,
+  Register,
+  Settings,
+  SubPayment,
+  Subscription,
+  Usermanagement,
+} from "./Pages";
 
 const App = () => {
   return (
@@ -35,7 +44,7 @@ const App = () => {
         <Scrolltotop />
         <Routes>
           {/*    AUTH PAGE */}
-       
+
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
           {/*    LANDING PAGE */}
@@ -44,6 +53,7 @@ const App = () => {
           <Route exact path="/setting" element={<Settings />} />
           <Route exact path="/subscription" element={<Subscription />} />
           <Route exact path="/payment" element={<SubPayment />} />
+          <Route exact path="/user-management" element={<Usermanagement />} />
           {/**Protected routes */}
         </Routes>
       </Router>

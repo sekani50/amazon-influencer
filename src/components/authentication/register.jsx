@@ -7,13 +7,13 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const navigate = useNavigate()
-  const [loading, setloading] = useState(false)
+  const [loading] = useState(false)
 
   const handleSubmit = () => {
-    const payload = {
-      email,
-      password
-  }
+  //   const payload = {
+  //     email,
+  //     password
+  // }
   }
   return (
     <div className="w-full h-full inset-0 fixed bg-white">

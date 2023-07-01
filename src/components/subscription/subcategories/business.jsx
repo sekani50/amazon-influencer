@@ -5,7 +5,7 @@ import Loader from "../../UI/Loader";
 import { useNavigate } from "react-router-dom";
 
 const Business = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const navigate = useNavigate()
   return (
     <div className="w-full rounded-xl font-light bg-white shadow-xl h-fit p-4">

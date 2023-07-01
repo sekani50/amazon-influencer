@@ -3,7 +3,7 @@ import Container from "../container/container";
 import profile from "../../assets/png/hijaby.jpg";
 import {IoIosArrowRoundBack} from 'react-icons/io'
 
-import BarChart from "./chart/chart";
+import BarChart from "../Composable/chart";
 import SingularCard from "./singleproductcard/singularCard";
 
 const RecordDetail = () => {
