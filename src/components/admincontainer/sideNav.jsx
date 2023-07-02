@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation, } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BiHome, BiLogOutCircle } from "react-icons/bi";
 import { BsCalendar2Minus } from "react-icons/bs";
 import profile from "../../assets/png/hijaby.jpg";
@@ -47,10 +47,11 @@ const SideNav = ({ isNav, setisNav }) => {
               <div className="text-gray-500">s.ferguson@gmail.com</div>
             </div>
           </div>
+
           <Link
-            to="/dashboard"
+            to="/admin/dashboard"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
-              pathname === "/dashboard"
+              pathname.toLocaleLowerCase().includes("admin/dashboard")
                 ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
@@ -58,11 +59,10 @@ const SideNav = ({ isNav, setisNav }) => {
             <BiHome className="text-[25px] " />
             <span>Dashboard</span>
           </Link>
-
           <Link
-            to="/user-management"
-            className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
-              pathname.toLocaleLowerCase().includes("user-management")
+            to="/admin/users"
+            className={`flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
+              pathname.toLocaleLowerCase().includes("user")
                 ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
@@ -71,21 +71,21 @@ const SideNav = ({ isNav, setisNav }) => {
             <span>User Management</span>
           </Link>
           <Link
-            to="/subscription"
+            to="/admin/products"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
-              pathname === "/subscription"
+              pathname === "/admin/products"
                 ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
           >
             <BsCalendar2Minus className="text-[25px] " />
-            <span>Subscription</span>
+            <span>Product</span>
           </Link>
 
           <Link
-            to="/setting"
+            to="/admin/videos"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
-              pathname === "/setting"
+              pathname === "/admin/videos"
                 ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
@@ -93,7 +93,7 @@ const SideNav = ({ isNav, setisNav }) => {
             <div className="w-[25px] ">
               <IoSettingsOutline className="text-[25px]" />
             </div>
-            <span>Settings</span>
+            <span>Videos</span>
           </Link>
 
           <Link

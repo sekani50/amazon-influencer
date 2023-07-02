@@ -11,7 +11,12 @@ import {
   Settings,
   SubPayment,
   Subscription,
-  Usermanagement,
+  Overview,
+  UserManagement,
+  Product,
+  Videos,
+  Userdetails
+
 } from "./Pages";
 
 const App = () => {
@@ -53,7 +58,11 @@ const App = () => {
           <Route exact path="/setting" element={<Settings />} />
           <Route exact path="/subscription" element={<Subscription />} />
           <Route exact path="/payment" element={<SubPayment />} />
-          <Route exact path="/user-management" element={<Usermanagement />} />
+          <Route exact path="/admin/dashboard" element={<Overview />} />
+          <Route exact path="/admin/users" element={<UserManagement />} />
+          <Route exact path="/admin/products" element={<Product />} />
+          <Route exact path="/admin/videos" element={<Videos />} />
+          <Route exact path="/admin/user/:id" element={<Userdetails />} />
           {/**Protected routes */}
         </Routes>
       </Router>

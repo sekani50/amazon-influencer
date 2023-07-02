@@ -3,7 +3,7 @@ import Inventories from "../card/inventories";
 import UserChart from "../Composable/userchat";
 import Inventorychat from "../Composable/inventory";
 import User from "../Composable/user";
-import Container from "../container/container";
+import Container from "../admincontainer/container";
 
 function Page() {
   return (
