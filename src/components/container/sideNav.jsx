@@ -49,7 +49,7 @@ const SideNav = ({ isNav, setisNav }) => {
           <Link
             to="/dashboard"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
-              pathname === "/dashboard"
+              pathname.includes("dashboard")
                 ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
@@ -61,7 +61,7 @@ const SideNav = ({ isNav, setisNav }) => {
           <Link
             to="/subscription"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
-              pathname === "/subscription"
+              pathname.includes("subscription")
                 ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
@@ -73,7 +73,7 @@ const SideNav = ({ isNav, setisNav }) => {
           <Link
             to="/setting"
             className={` flex space-x-3 justify-start items-center font-medium px-3 my-2 py-2 ${
-              pathname === "/setting"
+              pathname.includes("setting")
                 ? "bg-[#005ABC]  rounded-lg text-white"
                 : "text-gray-600"
             } `}
