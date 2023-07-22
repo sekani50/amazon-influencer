@@ -5,11 +5,11 @@ import Inventorychat from "../Composable/inventory";
 import User from "../Composable/user";
 import Container from "../admincontainer/container";
 
-function Page() {
+function Overview() {
   return (
     <div>
       <Container>
-        <div className="w-full h-full px-2  sm:px-6 bg-white pt-4 sm:pt-16">
+        <div className="w-full h-fit px-2  sm:px-6 bg-white pt-4 sm:pt-16">
           <div className=" mb-10 grid lg:grid-cols-4 md:grid-cols-3  sm:grid-cols-2 gap-10">
             <Inventories title="Total Sales" subtitle="$2,456" />
             <Inventories title="Total Users" subtitle="700" />
@@ -39,4 +39,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default Overview;

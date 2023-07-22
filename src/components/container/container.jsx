@@ -7,7 +7,7 @@ const Container = ({ children }) => {
     <div className="w-full h-full pb-[50px]  bg-gray-50 text-zinc-700">
       <TopNav isNav={isNav} setisNav={setisNav} />
 
-      <div className="right min-[1010px]:float-right bg-gray-50 ">
+      <div className="right min-[1010px]:float-right bg-gray-50 h-[100vh] ">
         {children}
       </div>
       <SideNav isNav={isNav} setisNav={setisNav} />

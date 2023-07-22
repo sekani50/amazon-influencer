@@ -3,7 +3,7 @@ import { AiOutlinePlayCircle } from "react-icons/ai";
 import RecordWidget from "../recordwidget/recordWidget";
 import Container from "../admincontainer/container";
 
-function Page() {
+function Videos() {
   const isactive = true;
 
   return (
@@ -44,4 +44,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default Videos;

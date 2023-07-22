@@ -29,7 +29,7 @@ const LoginAction = (loginParams, navigate, setLoading) => {
   return async (dispatch) => {
     setLoading(true);
     await axios
-      .post("/admin/auth/login", loginParams)
+      .post("/login", loginParams)
       .then((res) => {
         console.log(res.data.data);
         const { admin } = res.data.data;
@@ -56,7 +56,7 @@ const registration = (registrationParams, navigate, setLoading) => {
   return async (dispatch) => {
     setLoading(true);
     await axios
-      .post("/auth/signup", registrationParams)
+      .post("/register", registrationParams)
       .then((res) => {
         console.log(res.data.data);
         const { data } = res.data;

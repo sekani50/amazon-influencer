@@ -5,11 +5,11 @@ import RecordDetail from "../components/recorddetail/recordDetail";
 import Settings from "../components/setting/setting";
 import Subscription from "../components/subscription/subscription";
 import SubPayment from "../components/subscriptionpayment/subPayment";
-import Overview from "../components/admin/dashboard";
-import UserManagement from "../components/admin/users";
-import Product from "../components/admin/product";
-import Videos from "../components/admin/videos";
-import Userdetails from "../components/admin/userdetiail";
+import Overview from "../components/Admin/dashboard";
+import UserManagement from "../components/Admin/users";
+import Product from "../components/Admin/product";
+import Videos from "../components/Admin/videos";
+import Userdetails from "../components/Admin/userdetiail";
 export {
   Register,
   Login,

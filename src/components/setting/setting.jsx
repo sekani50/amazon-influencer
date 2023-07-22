@@ -9,7 +9,7 @@ const Settings = () => {
 
   return (
     <Container>
-      <div className="w-full h-full px-2  sm:px-6 bg-white  sm:space-y-7">
+      <div className="w-full h-fit px-2  sm:px-6 bg-white  sm:space-y-7">
         <div className="border-b-2 px-2 border-gray-300 mb-4 w-full flex items-center ">
           <div className="flex items-center space-x-8">
             <span

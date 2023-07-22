@@ -3,7 +3,7 @@ import React from "react";
 import Container from "../admincontainer/container";
 import { FaPenAlt } from "react-icons/fa";
 
-function Page() {
+function Userdetails() {
   return (
     <div>
       <Container>
@@ -62,4 +62,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default Userdetails;

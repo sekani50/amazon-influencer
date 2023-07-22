@@ -7,7 +7,7 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const navigate = useNavigate()
-  const [loading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = () => {
   //   const payload = {

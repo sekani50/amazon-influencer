@@ -5,7 +5,7 @@ import avatar from "../../assets/svg/avatar.svg";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-function Page() {
+function UserManagement() {
   const [actions, setAction] = useState(null);
   return (
     <div>
@@ -78,4 +78,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default UserManagement;

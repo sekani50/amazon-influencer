@@ -2,7 +2,7 @@ import axios from "axios";
 
 const FetchClient = () => {
   const defaultOptions = {
-    baseURL: ' https://example.com/api',
+    baseURL: 'https://test-amazon-php.ygrehu.easypanel.host',
   };
 
   // Create instance
