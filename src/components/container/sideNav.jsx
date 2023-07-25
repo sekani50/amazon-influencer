@@ -27,9 +27,12 @@ const SideNav = ({ isNav, setisNav }) => {
         className="px-4 py-3 sm:px-6 sm:py-4 flex flex-col relative items-center h-full w-[250px] cursor-pointer shadow-md bg-white"
       >
         <div className="my-1 justify-center  flex flex-col w-full ">
-          <div className="uppercase text-[#005ABC] font-medium my-3 text-[15px] sm:text-lg">
+          <Link
+            to="/"
+            className="uppercase text-[#005ABC] font-medium my-3 text-[15px] sm:text-lg"
+          >
             Amz
-          </div>
+          </Link>
 
           <div className="grid w-full items-center my-4 gap-2 grid-cols-6">
             <div className="rounded-full h-[30px] w-[30px]">

@@ -15,7 +15,9 @@ import {
   UserManagement,
   Product,
   Videos,
-  Userdetails
+  Userdetails,
+  Verification,
+  CaptchaAnswer
 
 } from "./Pages";
 
@@ -53,6 +55,8 @@ const App = () => {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
           {/*    LANDING PAGE */}
+          <Route exact path="/verification/captcha" element={<CaptchaAnswer />} />
+          <Route exact path="/verification" element={<Verification />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/product/:id" element={<RecordDetail />} />
           <Route exact path="/setting" element={<Settings />} />

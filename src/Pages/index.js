@@ -9,7 +9,9 @@ import Overview from "../components/Admin/dashboard";
 import UserManagement from "../components/Admin/users";
 import Product from "../components/Admin/product";
 import Videos from "../components/Admin/videos";
+import CaptchaAnswer from "../components/authentication/captchaAnswer";
 import Userdetails from "../components/Admin/userdetiail";
+import Verification from "../components/authentication/verification";
 export {
   Register,
   Login,
@@ -23,4 +25,6 @@ export {
   Product,
   Videos,
   Userdetails,
+  Verification,
+  CaptchaAnswer
 };

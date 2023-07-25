@@ -2,7 +2,6 @@ import * as type from "../Actions/Types";
 
 const initailState = {
   currentUser: null,
-
   token: "",
 };
 const User = (state = initailState, action) => {

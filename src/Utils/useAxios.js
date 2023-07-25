@@ -2,7 +2,7 @@ import axios from "axios";
 
 const FetchClient = () => {
   const defaultOptions = {
-    baseURL: 'https://test-amazon-php.ygrehu.easypanel.host',
+    baseURL: 'https://amazon-tracker-869bb35ecdc6.herokuapp.com',
   };
 
   // Create instance

@@ -23,23 +23,44 @@ const logout = () => {
 };
 
 
-
+const getUser = (token) => {
+  return axios.get("/profile", {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  })
+}
 
 const LoginAction = (loginParams, navigate, setLoading) => {
   return async (dispatch) => {
     setLoading(true);
     await axios
       .post("/login", loginParams)
-      .then((res) => {
-        console.log(res.data.data);
-        const { admin } = res.data.data;
-        dispatch(GetUsersSuccess(admin));
+      .then(async (res) => {
+        console.log(res.data);
+       
 
-        const { token } = res.data.data.accessToken;
+        const { token } = res.data
         dispatch(loginSuccess(token));
+        await getUser(token)
+        .then((res) => {
+          console.log(res.data)
+          dispatch(GetUsersSuccess(res.data));
+          if(res.data.is_verified !== 'no') {
+             navigate("/dashboard");
+          }
+          else {
+            navigate("/verification")
+          }
+
+        })
+        .catch((err)=> {
+          console.log(err)
+        })
+
         console.log(token);
-        console.log(admin);
-        navigate("/home");
+        //console.log(admin);
+       // navigate("/dashboard");
         setLoading(false);
         toast.success("Login successful");
       })
@@ -56,13 +77,19 @@ const registration = (registrationParams, navigate, setLoading) => {
   return async (dispatch) => {
     setLoading(true);
     await axios
-      .post("/register", registrationParams)
+      .post("/register", registrationParams, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }
+      })
       .then((res) => {
-        console.log(res.data.data);
-        const { data } = res.data;
-        dispatch(GetUsersSuccess(data.newVendor));
+        console.log(res.data);
+       
+        dispatch(GetUsersSuccess(res.data));
+        dispatch(loginSuccess(res.data.token));
         toast.success("Registration Successful");
-        navigate("/meal");
+        navigate("/verification");
         setLoading(false);
       })
       .catch((error) => {
