@@ -24,7 +24,7 @@ function Videos() {
                 <div>Status</div>
               </div>
 
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((v) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((v) => (
                 <RecordWidget
                   key={v}
                   image={""}
