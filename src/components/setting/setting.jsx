@@ -43,7 +43,7 @@ const Settings = () => {
         
         
        
-        <Account/>
+       {active === 1 &&  <Account/>}
         {active === 0 && <Profile/>}
               
       </div>

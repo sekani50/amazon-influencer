@@ -79,3 +79,12 @@ export const getSingleVideo = (token, id) => {
     },
   })
 }
+
+// 
+export const updateProfile = (token, payload) => {
+  return axios.get(`/profile`, payload, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}
