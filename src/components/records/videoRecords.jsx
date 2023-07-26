@@ -6,7 +6,7 @@ import empty from "../../assets/png/emptyorder.png";
 import { useEffect, useState } from "react";
 import { getVideos } from "../../Utils/api";
 import RecordWidgetB from "../recordwidget/recordWidgetb";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const VideoRecords = ({ tab }) => {
   const { token } = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
@@ -84,10 +84,9 @@ const VideoRecords = ({ tab }) => {
               idx
             ) => {
               return (
-                <div
-                onClick={() => {
-                  navigate(`/product${id}`)
-                }}
+                <Link to={`/product${id}`}
+               
+                className="cursor-pointer"
                 key={idx}>
                   <RecordWidgetB
                     image={image}
@@ -97,7 +96,7 @@ const VideoRecords = ({ tab }) => {
                     status={status}
                     tab={tab}
                   />
-                </div>
+                </Link>
               );
             }
           )}
