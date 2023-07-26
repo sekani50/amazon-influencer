@@ -13,8 +13,8 @@ import {
   Subscription,
   //Overview,
   //UserManagement,
-  Product,
-  Videos,
+  //Product,
+  //Videos,
   //Userdetails,
   Verification,
   CaptchaAnswer,
@@ -58,7 +58,10 @@ const App = () => {
           {/*    LANDING PAGE 
           <Route exact path="/admin/users" element={<UserManagement />} />
            <Route exact path="/admin/user/:id" element={<Userdetails />} />
-          <Route exact path="/admin/dashboard" element={<Overview />} /> */}
+          <Route exact path="/admin/dashboard" element={<Overview />} />
+           <Route exact path="/admin/products" element={<Product />} />
+          <Route exact path="/admin/videos" element={<Videos />} />
+          */}
           <Route exact path="/verification/captcha" element={<CaptchaAnswer />} />
           <Route exact path="/verification" element={<Verification />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
@@ -68,8 +71,7 @@ const App = () => {
           <Route exact path="/payment" element={<SubPayment />} />
          
           
-          <Route exact path="/admin/products" element={<Product />} />
-          <Route exact path="/admin/videos" element={<Videos />} />
+         
          
          
           {/**Protected routes */}
