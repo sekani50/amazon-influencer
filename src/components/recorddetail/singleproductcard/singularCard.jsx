@@ -2,7 +2,7 @@ import React from "react";
 import views from "../../../assets/svg/view.svg"
 import percent from "../../../assets/svg/percent.svg"
 import scale from "../../../assets/svg/scale.svg"
-const SingularCard = () => {
+const SingularCard = ({views:text,loading, avgPercentView, avgViewDuration}) => {
     return (
         <div className="w-full items-center grid grid-cols-2 px-4 sm:px-0 gap-4 sm:gap-[11rem] sm:grid-cols-5 ">
               
@@ -14,7 +14,7 @@ const SingularCard = () => {
             </div>
             <div className="flex flex-col justify-start space-y-4">
                 <div className="font-extralight">Views</div>
-                <h1 className="text-xl sm:text-2xl font-semibold">100</h1>
+                <h1 className="text-xl sm:text-2xl font-semibold">{loading ? '0':text || 0}</h1>
             </div>
 
         </div>
@@ -27,7 +27,7 @@ const SingularCard = () => {
             </div>
             <div className="flex flex-col justify-start space-y-4">
                 <div className="font-extralight whitespace-nowrap">View Duration</div>
-                <h1 className="text-xl sm:text-2xl font-semibold">2hr</h1>
+                <h1 className="text-xl sm:text-2xl font-semibold">{loading ? '0' :avgViewDuration || '0'}</h1>
             </div>
 
         </div>
@@ -39,8 +39,8 @@ const SingularCard = () => {
             </div>
             </div>
             <div className="flex flex-col col-span-5 justify-start space-y-4">
-                <div className="font-extralight whitespace-nowrap">Associate Product Sales</div>
-                <h1 className="text-xl sm:text-2xl font-semibold">$35k</h1>
+                <div className="font-extralight whitespace-nowrap">Average Percent View</div>
+                <h1 className="text-xl sm:text-2xl font-semibold">{loading ? '0%' : avgPercentView  || '0%'}</h1>
             </div>
 
         </div>

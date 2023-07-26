@@ -83,7 +83,7 @@ const VideoRecords = ({ tab }) => {
               idx
             ) => {
               return (
-                <Link to={`/product${id}`}
+                <Link to={`/product/${id}`}
                
                 className="cursor-pointer"
                 key={idx}>

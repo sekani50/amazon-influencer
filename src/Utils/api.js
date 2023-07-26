@@ -70,3 +70,12 @@ export const getVideoMetric = (token) => {
     },
   })
 }
+
+// /associate/video/report?id=14
+export const getSingleVideo = (token, id) => {
+  return axios.get(`/associate/video/report?id=${id}`, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}
