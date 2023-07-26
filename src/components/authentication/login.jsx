@@ -74,7 +74,11 @@ const Login = () => {
             <input type="checkbox" />
             <label htmlFor="subscribeNews">Remember me</label>
           </div>
-          <button className="text-[#005ABC] font-semibold">
+          <button
+          onClick={() => {
+            navigate("/reset-password")
+          }}
+          className="text-[#005ABC] font-semibold">
             Forgot Password?
           </button>
         </div>

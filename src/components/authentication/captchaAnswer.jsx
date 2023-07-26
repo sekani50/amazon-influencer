@@ -65,6 +65,7 @@ const CaptchaAnswer = () => {
       .catch((err) => {
         console.log(err);
         toast.error(err.message)
+        //toast.error(err.response.data.error)
         setRegenerating(false)
       });
   }
@@ -86,8 +87,8 @@ const CaptchaAnswer = () => {
        {isError && <div className="w-full items-center justify-center transition-all duration-150 flex">
             <button
             onClick={regenerate}
-            className="bg-[#005ABC] text-white w-[150px] flex items-center justify-center rounded-lg p-2">
-              {regenerating  ? <LoaderIcon className="animate-spin w-3" />: 'Regenerate'}
+            className="bg-[#005ABC] font-medium text-white w-[150px] flex items-center justify-center rounded-lg px-2 h-[45px]">
+              {regenerating  ? <LoaderIcon className="animate-spin" />: 'Regenerate'}
             </button>
         </div>}
         <div className="form-group space-y-4 w-full">

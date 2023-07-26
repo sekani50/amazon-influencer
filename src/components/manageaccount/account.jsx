@@ -1,15 +1,50 @@
 import React, {useState} from "react";
-import Loader from "../UI/Loader";
 import Switch from "../UI/switch";
-
+import { toast } from "react-hot-toast";
+import { LoaderIcon } from "lucide-react";
+import { changePassword } from "../../Utils/api";
+import { useSelector } from "react-redux";
 const Account = () => {
     const [curpassword, setcurPassword] = useState()
     const [newpassword, setnewpassword] = useState()
     const [confirmPassword, setconfirmPassword] = useState()
-    const [loading] = useState(false)
+    const [loading, setloading] = useState(false)
+    const {token} = useSelector((state) => state.user)
 
     
-  const handleSubmit = () => {}
+  const handleSubmit = async() => {
+    const payload = {
+      old_password: curpassword,
+      new_password: newpassword,
+      confirm_password: confirmPassword
+    }
+
+    for (let i in payload) {
+      if(payload[i] === '') {
+        toast.error(`${i} is required`)
+        return
+      }
+    }
+
+    if(confirmPassword !== newpassword) {
+      toast.error(`Password must be the same`)
+      return
+    }
+    setloading(true)
+    await changePassword(token,payload)
+    .then((res) => {
+      console.log(res)
+      setloading(false)
+      toast.success('Update successful')
+      window.location.reload()
+    })
+    .catch((err) => {
+      console.log(err)
+      setloading(false)
+      toast.error(err.response.data.error)
+    })
+
+  }
     return (
         <div className="w-full pb-10">
         <div className="w-[90%] mx-auto sm:w-[400px] mb-4 space-y-4 flex flex-col justify-center items-center">
@@ -64,9 +99,9 @@ const Account = () => {
     </div>
     <button
       onClick={handleSubmit}
-      className="w-full py-3 bg-[#005ABC] font-semibold rounded-lg text-white flex justify-center items-center space-x-2"
+      className="w-full h-[45px] bg-[#005ABC] font-semibold rounded-lg text-white flex justify-center items-center"
     >
-      {loading ? <Loader /> : "Change Password"}
+      {loading ? <LoaderIcon className="animate-spin" /> : "Change Password"}
     </button>
 
         </div>

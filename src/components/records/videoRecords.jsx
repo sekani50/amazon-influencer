@@ -6,7 +6,6 @@ import empty from "../../assets/png/emptyorder.png";
 import { useEffect, useState } from "react";
 import { getVideos } from "../../Utils/api";
 import RecordWidgetB from "../recordwidget/recordWidgetb";
-import { Link } from "react-router-dom";
 const VideoRecords = ({ tab }) => {
   const { token } = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
@@ -51,6 +50,7 @@ const VideoRecords = ({ tab }) => {
           <div className="col-span-2">Average Views</div>
           <div className="col-span-2">Avg. View Duraton</div>
           <div>Status</div>
+          <div>Video Link</div>
           
         </div>
         {loading && (
@@ -77,25 +77,27 @@ const VideoRecords = ({ tab }) => {
                 avg_percent_view,
                 avg_view_duration,
                 status,
+                video,
                 id
 
               },
               idx
             ) => {
               return (
-                <Link to={`/product/${id}`}
-               
+                <div 
                 className="cursor-pointer"
                 key={idx}>
                   <RecordWidgetB
                     image={image}
+                    id={id}
                     name={title}
+                    video={video}
                     avgView={avg_percent_view}
                     avgViewtime={avg_view_duration}
                     status={status}
                     tab={tab}
                   />
-                </Link>
+                </div>
               );
             }
           )}

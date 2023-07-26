@@ -18,6 +18,7 @@ import {
   //Userdetails,
   Verification,
   CaptchaAnswer,
+  ResetPassword,
 
 
 } from "./Pages";
@@ -69,6 +70,7 @@ const App = () => {
           <Route exact path="/setting" element={<Settings />} />
           <Route exact path="/subscription" element={<Subscription />} />
           <Route exact path="/payment" element={<SubPayment />} />
+          <Route exact path="/reset-password" element={<ResetPassword />} />
          
           
          

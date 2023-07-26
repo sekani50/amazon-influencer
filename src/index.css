@@ -52,7 +52,7 @@ input[type="checkbox"] {
 
 .dashboard-scroll-style::-webkit-scrollbar {
   width: 10px;
-  height: 8px;
+  height: 6px;
 }
 
 .dashboard-scroll-style::-webkit-scrollbar-thumb {

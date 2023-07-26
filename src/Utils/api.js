@@ -82,7 +82,25 @@ export const getSingleVideo = (token, id) => {
 
 // 
 export const updateProfile = (token, payload) => {
-  return axios.get(`/profile`, payload, {
+  return axios.put(`/profile`, payload, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}
+
+// /password/change
+export const changePassword = (token, payload) => {
+  return axios.put(`/password/change`, payload, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}
+
+// /password/forgot
+export const sendMail = (token, payload) => {
+  return axios.post(`/password/forgot`, payload, {
     headers: {
       Authorization: "Bearer " + token,
     },
