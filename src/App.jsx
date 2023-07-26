@@ -12,10 +12,10 @@ import {
   SubPayment,
   Subscription,
   //Overview,
-  UserManagement,
+  //UserManagement,
   Product,
   Videos,
-  Userdetails,
+  //Userdetails,
   Verification,
   CaptchaAnswer,
 
@@ -55,7 +55,10 @@ const App = () => {
 
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
-          {/*    LANDING PAGE  <Route exact path="/admin/dashboard" element={<Overview />} /> */}
+          {/*    LANDING PAGE 
+          <Route exact path="/admin/users" element={<UserManagement />} />
+           <Route exact path="/admin/user/:id" element={<Userdetails />} />
+          <Route exact path="/admin/dashboard" element={<Overview />} /> */}
           <Route exact path="/verification/captcha" element={<CaptchaAnswer />} />
           <Route exact path="/verification" element={<Verification />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
@@ -64,10 +67,10 @@ const App = () => {
           <Route exact path="/subscription" element={<Subscription />} />
           <Route exact path="/payment" element={<SubPayment />} />
          
-          <Route exact path="/admin/users" element={<UserManagement />} />
+          
           <Route exact path="/admin/products" element={<Product />} />
           <Route exact path="/admin/videos" element={<Videos />} />
-          <Route exact path="/admin/user/:id" element={<Userdetails />} />
+         
          
           {/**Protected routes */}
         </Routes>
