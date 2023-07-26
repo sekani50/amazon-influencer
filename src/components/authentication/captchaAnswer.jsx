@@ -32,6 +32,7 @@ const CaptchaAnswer = () => {
       .then((res) => {
         setLoading(false)
         console.log(res.data);
+        toast.success('Verfication successful')
         navigate("/dashboard");
       })
       .catch((err) => {

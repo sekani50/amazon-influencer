@@ -60,7 +60,7 @@ const Verification = () => {
         <div className="sm:w-[64px] sm:h-[64px] h-[40px] w-[40px]">
           <img src={logo} alt="" className="w-full h-full" />
         </div>
-        <div className="text-lg font-semibold sm:text-2xl">Get Verified</div>
+        <div className="text-lg font-semibold sm:text-2xl">Enter Your Amazon Credentials</div>
 
         <div className="form-group space-y-4 w-full">
           <label className="block font-semibold " htmlFor="email">
