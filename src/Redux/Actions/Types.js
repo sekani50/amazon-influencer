@@ -10,5 +10,5 @@ export const LOGOUT = "LOGOUT";
 
 export const GET_GALLERY_SUCCESS = "GET_GALLERY_SUCCESS";
 export const GET_JOB_SUCCESS = "GET_JOB_SUCCESS";
-
+export const VERIFY = "VERIFY";
 

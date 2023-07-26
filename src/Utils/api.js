@@ -27,3 +27,20 @@ export const captchaAnswer = (token, payload) => {
   })
 }
 
+//get product
+export const getProducts = (token, page) => {
+  return axios.post('/products', page, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}
+
+//get metrics  
+export const getMetrics = (token) => {
+  return axios.get('/products/metric', {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}

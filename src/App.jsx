@@ -17,7 +17,8 @@ import {
   Videos,
   Userdetails,
   Verification,
-  CaptchaAnswer
+  CaptchaAnswer,
+
 
 } from "./Pages";
 
@@ -67,6 +68,7 @@ const App = () => {
           <Route exact path="/admin/products" element={<Product />} />
           <Route exact path="/admin/videos" element={<Videos />} />
           <Route exact path="/admin/user/:id" element={<Userdetails />} />
+         
           {/**Protected routes */}
         </Routes>
       </Router>

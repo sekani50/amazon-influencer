@@ -3,10 +3,12 @@ import logo from "../../assets/png/logo.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { LoaderIcon } from "lucide-react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { credentials } from "../../Utils/api";
 import { MdNavigateBefore } from "react-icons/md";
+import { getVerificationData } from "../../Redux/Actions/ActionCreators";
 const Verification = () => {
+  const dispatch = useDispatch()
   const { currentUser, token } = useSelector((state) => state.user);
   const [email, setEmail] = useState(currentUser?.email);
 
@@ -31,13 +33,11 @@ const Verification = () => {
       .then((res) => {
        // console.log(res.data);
         const {captcha} = res.data;
-       navigate("/verification/captcha", {
-        state: {
-            captcha,
-            password
-        }
-       })
-        
+       navigate("/verification/captcha")
+        dispatch(getVerificationData({
+          captcha,
+          password
+        }))
         setLoading(false)
       })
       .catch((err) => {

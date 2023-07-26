@@ -3,6 +3,7 @@ import * as type from "../Actions/Types";
 const initailState = {
   currentUser: null,
   token: "",
+  verificationData: null
 };
 const User = (state = initailState, action) => {
   switch (action.type) {
@@ -16,7 +17,11 @@ const User = (state = initailState, action) => {
         ...state,
         currentUser: action.payload,
       };
-
+      case type.VERIFY:
+        return {
+          ...state,
+          verificationData: action.payload,
+        };
     case type.LOGOUT:
       return {
         ...state,

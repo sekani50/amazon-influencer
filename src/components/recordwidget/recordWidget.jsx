@@ -1,15 +1,14 @@
 import React from "react";
-import profile from "../../assets/png/hijaby.jpg";
-import VideoButton from "./buttonmodals/videoButton";
-import ProductButton from "./buttonmodals/productButton";
+import profile from "../../assets/png/customerpic.png";
 import { useNavigate } from "react-router-dom";
 const RecordWidget = ({
   image,
   name,
-  views,
-  active,
+  ordered,
+  shipped,
+  price,
   commission,
-  tab,
+  
   sales,
 }) => {
   const navigate = useNavigate();
@@ -32,13 +31,15 @@ const RecordWidget = ({
           <div className="col-span-5 whitespace-nowrap text-ellipsis w-[190px] overflow-hidden ">
             {name}
           </div>
+         
         </div>
-        <div>{views}</div>
-        <div className="col-span-2">{`Nov 15, 2021 08:00 AM`}</div>
+        <div className="">{ordered}</div>
+          <div className="">{shipped}</div>
+        <div>{price}</div>
+       
         <div>{`$${commission.toLocaleString()}`}</div>
-        <div>{`$${sales.toLocaleString()}`}</div>
-        {tab === "Videos" && <VideoButton active={active} />}
-        {tab === "Products" && <ProductButton active={active} />}
+        <div>{`${sales.toLocaleString()}`}</div>
+        
       </div>
     </div>
   );

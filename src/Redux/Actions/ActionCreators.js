@@ -22,6 +22,14 @@ const logout = () => {
   };
 };
 
+const getVerificationData = (data) => {
+  return {
+    type: type.VERIFY,
+    payload:data
+  };
+};
+
+
 
 const getUser = (token) => {
   return axios.get("/profile", {
@@ -105,6 +113,6 @@ export {
   registration,
   loginSuccess,
   logout,
-
+  getVerificationData,
   
 };

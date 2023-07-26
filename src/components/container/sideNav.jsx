@@ -2,10 +2,12 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BiHome, BiLogOutCircle } from "react-icons/bi";
 import { BsCalendar2Minus } from "react-icons/bs";
-import profile from "../../assets/png/hijaby.jpg";
+//import profile from "../../assets/png/hijaby.jpg";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 const SideNav = ({ isNav, setisNav }) => {
+  const {currentUser} = useSelector((state) => state.user)
   const { pathname } = useLocation();
   // const navigate = useNavigate();
   return (
@@ -34,19 +36,17 @@ const SideNav = ({ isNav, setisNav }) => {
             Amz
           </Link>
 
-          <div className="grid w-full items-center my-4 gap-2 grid-cols-6">
-            <div className="rounded-full h-[30px] w-[30px]">
-              <img
-                src={profile}
-                alt=""
-                className="w-full h-full rounded-full"
-              />
-            </div>
-            <div className="flex flex-col justify-start col-span-5">
-              <div className="whitespace-nowrap text-ellipsis w-full">
-                Seira Ferguson
+          <div className="grid w-full items-center my-4 gap-12 grid-cols-6">
+            <div className="rounded-full h-[40px] w-[40px]">
+              <div className="w-full h-full flex items-center justify-center p-2 rounded-full border ">
+                <span className="text-[#005ABC] font-semibold uppercase">{currentUser?.first_name.charAt(0)}</span>
               </div>
-              <div className="text-gray-500">s.ferguson@gmail.com</div>
+            </div>
+            <div className="flex flex-col w-[160px] justify-start col-span-5">
+              <div className="whitespace-nowrap text-ellipsis w-full overflow-hidden">
+                {currentUser?.first_name}
+              </div>
+              <div className="text-gray-500 whitespace-nowrap text-ellipsis w-full overflow-hidden">{currentUser?.email}</div>
             </div>
           </div>
           <Link

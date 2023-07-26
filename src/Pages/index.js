@@ -12,6 +12,7 @@ import Videos from "../components/Admin/videos";
 import CaptchaAnswer from "../components/authentication/captchaAnswer";
 import Userdetails from "../components/Admin/userdetiail";
 import Verification from "../components/authentication/verification";
+
 export {
   Register,
   Login,
@@ -26,5 +27,6 @@ export {
   Videos,
   Userdetails,
   Verification,
-  CaptchaAnswer
+  CaptchaAnswer,
+  
 };
