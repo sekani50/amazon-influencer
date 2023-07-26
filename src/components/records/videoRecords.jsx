@@ -1,11 +1,11 @@
 import React from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
-import RecordWidget from "../recordwidget/recordWidget";
 import { useSelector } from "react-redux";
 import { LoaderIcon } from 'lucide-react'
 import empty from "../../assets/png/emptyorder.png";
 import { useEffect, useState } from "react";
 import { getVideos } from "../../Utils/api";
+import RecordWidgetB from "../recordwidget/recordWidgetb";
 const VideoRecords = ({ tab }) => {
   const { token } = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
@@ -46,13 +46,12 @@ const VideoRecords = ({ tab }) => {
         <div className="w-full items-center bg-white px-3 py-3 sm:py-5 grid grid-cols-9 gap-2 text-gray-500">
           <div className="flex space-x-2 items-center col-span-3">
             <AiOutlinePlayCircle className="text-[#005ABC] text-[25px]" />
-            <span>Name</span>
+            <span>Title</span>
           </div>
-          <div className="">Total Ordered</div>
-          <div className="">Total Shipped</div>
-          <div>Price</div>
-          <div>Commission</div>
-          <div>Revenue</div>
+          <div className="col-span-2">Average Views</div>
+          <div className="col-span-2">Avg. View Duraton</div>
+          <div>Status</div>
+          
         </div>
         {loading && (
           <div className="w-full items-center justify-center flex h-[300px]">
@@ -73,25 +72,23 @@ const VideoRecords = ({ tab }) => {
           data?.map(
             (
               {
-                name,
-                price,
-                revenue,
-                commission_income,
-                total_ordered,
-                items_shipped,
+                title,
+                image,
+                avg_percent_view,
+                avg_view_duration,
+                status
+
               },
               idx
             ) => {
               return (
                 <div key={idx}>
-                  <RecordWidget
-                    image={""}
-                    name={name}
-                    shipped={items_shipped}
-                    ordered={total_ordered}
-                    price={price}
-                    commission={commission_income}
-                    sales={revenue}
+                  <RecordWidgetB
+                    image={image}
+                    name={title}
+                    avgView={avg_percent_view}
+                    avgViewtime={avg_view_duration}
+                    status={status}
                     tab={tab}
                   />
                 </div>

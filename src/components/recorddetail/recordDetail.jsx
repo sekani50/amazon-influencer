@@ -5,12 +5,18 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 
 import BarChart from "../Composable/chart";
 import SingularCard from "./singleproductcard/singularCard";
+import { useNavigate } from "react-router-dom";
 
 const RecordDetail = () => {
+  const navigate = useNavigate()
   return (
     <Container>
       <div className="w-full px-2  sm:px-6 space-y-4 sm:space-y-7 py-3 sm:py-4 h-fit">
-        <div className="flex space-x-2 items-center text-[12px] sm:text-sm text-gray-500">
+        <div
+        onClick={() => {
+          navigate(-1)
+        }}
+        className="cursor-pointer flex space-x-2 items-center text-[12px] sm:text-sm text-gray-500">
           <IoIosArrowRoundBack className="text-[20px]" />
           <span>Back</span>
         </div>

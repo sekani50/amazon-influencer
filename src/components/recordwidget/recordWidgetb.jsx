@@ -1,22 +1,13 @@
 import React from "react";
 import profile from "../../assets/png/customerpic.png";
 import { useNavigate } from "react-router-dom";
-const RecordWidget = ({
-  image,
-  name,
-  ordered,
-  shipped,
-  price,
-  commission,
-  
-  sales,
-}) => {
+const RecordWidgetB = ({ image, name, avgViewtime, avgView, status }) => {
   const navigate = useNavigate();
   return (
     <div className="bg-white space-y-2 sm:space-y-3 w-full">
       <div
         onClick={() => {
-          navigate("/product/1");
+          navigate("/video/1");
         }}
         className="w-full items-center  px-3 py-3 grid grid-cols-9 gap-2 border border-gray-300 rounded-sm"
       >
@@ -31,18 +22,14 @@ const RecordWidget = ({
           <div className="col-span-5 whitespace-nowrap text-ellipsis w-[190px] overflow-hidden ">
             {name}
           </div>
-         
         </div>
-        <div className="">{ordered}</div>
-          <div className="">{shipped}</div>
-        <div>{price}</div>
-       
-        <div>{`$${commission?.toLocaleString()}`}</div>
-        <div>{`${sales?.toLocaleString()}`}</div>
-        
+        <div className="col-span-2">{avgView}</div>
+        <div className="col-span-2">{avgViewtime}</div>
+
+        <div>{status}</div>
       </div>
     </div>
   );
 };
 
-export default RecordWidget;
+export default RecordWidgetB;
