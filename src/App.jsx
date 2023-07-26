@@ -11,7 +11,7 @@ import {
   Settings,
   SubPayment,
   Subscription,
-  Overview,
+  //Overview,
   UserManagement,
   Product,
   Videos,
@@ -55,7 +55,7 @@ const App = () => {
 
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
-          {/*    LANDING PAGE */}
+          {/*    LANDING PAGE  <Route exact path="/admin/dashboard" element={<Overview />} /> */}
           <Route exact path="/verification/captcha" element={<CaptchaAnswer />} />
           <Route exact path="/verification" element={<Verification />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
@@ -63,7 +63,7 @@ const App = () => {
           <Route exact path="/setting" element={<Settings />} />
           <Route exact path="/subscription" element={<Subscription />} />
           <Route exact path="/payment" element={<SubPayment />} />
-          <Route exact path="/admin/dashboard" element={<Overview />} />
+         
           <Route exact path="/admin/users" element={<UserManagement />} />
           <Route exact path="/admin/products" element={<Product />} />
           <Route exact path="/admin/videos" element={<Videos />} />

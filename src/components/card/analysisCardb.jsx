@@ -1,15 +1,15 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { MdShowChart, MdOutlineScale, MdShoppingBasket } from "react-icons/md";
-import { getMetrics } from "../../Utils/api";
+import { getVideoMetric } from "../../Utils/api";
 import { useSelector } from "react-redux";
 
-const AnalysisCard = () => {
+const AnalysisCardB = () => {
   const {token} = useSelector((state) => state.user)
   const [data, setdata] = useState()
   useEffect(() => {
     async function getMetric() {
-      await getMetrics(token)
+      await getVideoMetric(token)
         .then((res) => {
           console.log(res);
           setdata(res.data)
@@ -36,10 +36,10 @@ const AnalysisCard = () => {
                 </div>
 
                 <span className="text-gray-500 whitespace-nowrap">
-                  Total Items Shipped Revenue
+                    Views
                 </span>
               </div>
-              <div className="text-2xl">{data?.shipped_items_revenue|| '$0'}</div>
+              <div className="text-2xl">{data?.views|| '00'}</div>
             </div>
             {/** */}
             <div className="w-full flex flex-col items-center justify-center space-y-3 h-full p-4">
@@ -51,10 +51,10 @@ const AnalysisCard = () => {
                 </div>
 
                 <span className="text-gray-500 whitespace-nowrap">
-                  Total Shipped
+                  Average Views Duration
                 </span>
               </div>
-              <div className="text-2xl">{data?.shipped_items | '0'}</div>
+              <div className="text-2xl">{data?.avg_view_duration || '0:00'}</div>
             </div>
             {/** */}
             <div className="w-full flex flex-col items-center justify-center space-y-3 h-full p-4">
@@ -66,10 +66,10 @@ const AnalysisCard = () => {
                 </div>
 
                 <span className="text-gray-500 whitespace-nowrap">
-                  Total Ordered 
+                  Average Viewed 
                 </span>
               </div>
-              <div className="text-2xl">{data?.ordered_items || '0'}</div>
+              <div className="text-2xl">{data?.avg_viewed || '0'}</div>
             </div>
             {/** */}
             <div className="w-full flex flex-col items-center justify-center space-y-3 h-full p-4">
@@ -84,7 +84,7 @@ const AnalysisCard = () => {
                   Summary
                 </span>
               </div>
-              <div className="text-2xl">{data?.summary || '$0'}</div>
+              <div className="text-2xl">{data?.summary || '0'}</div>
             </div>
           </div>
         </div>
@@ -93,4 +93,4 @@ const AnalysisCard = () => {
   );
 };
 
-export default AnalysisCard;
+export default AnalysisCardB;

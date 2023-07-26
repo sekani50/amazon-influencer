@@ -3,14 +3,15 @@ import Container from "../container/container";
 import AnalysisCard from "../card/analysisCard";
 import ProductRecords from "../records/productRecords";
 import VideoRecords from "../records/videoRecords";
+import AnalysisCardB from "../card/analysisCardb";
 const Dashboard = () => {
   const [active, setactive] = useState(0);
   const [tab, setTab] = useState('Videos')
   return (
     <Container>
       <div className="w-full px-2  sm:px-6 space-y-4 sm:space-y-6 py-4 h-fit">
-        <AnalysisCard />
-
+       {tab === 'Products' && <AnalysisCard />}
+       {tab === 'Videos' && <AnalysisCardB />}
         <div className="border-b-2 px-2 border-gray-300 w-full flex items-center ">
           <div className="flex items-center space-x-8">
             <span

@@ -5,7 +5,7 @@ import RecordDetail from "../components/recorddetail/recordDetail";
 import Settings from "../components/setting/setting";
 import Subscription from "../components/subscription/subscription";
 import SubPayment from "../components/subscriptionpayment/subPayment";
-import Overview from "../components/Admin/dashboard";
+//import Overview from "../components/Admin/dashboard";
 import UserManagement from "../components/Admin/users";
 import Product from "../components/Admin/product";
 import Videos from "../components/Admin/videos";
@@ -21,7 +21,7 @@ export {
   Settings,
   Subscription,
   SubPayment,
-  Overview,
+  //Overview,
   UserManagement,
   Product,
   Videos,

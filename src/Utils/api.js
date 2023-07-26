@@ -44,3 +44,29 @@ export const getMetrics = (token) => {
     },
   })
 }
+
+//post videos
+export const getVideos = (token, page) => {
+  return axios.post('/videos', page, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}
+
+///video-sales
+export const getVideoSales = (token) => {
+  return axios.post('/video-sales', {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}
+// 
+export const getVideoMetric = (token) => {
+  return axios.get('/videos/metric', {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}
