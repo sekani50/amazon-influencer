@@ -6,11 +6,12 @@ import empty from "../../assets/png/emptyorder.png";
 import { useEffect, useState } from "react";
 import { getVideos } from "../../Utils/api";
 import RecordWidgetB from "../recordwidget/recordWidgetb";
+import { useNavigate } from "react-router-dom";
 const VideoRecords = ({ tab }) => {
   const { token } = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
   const [data, setdata] = useState([]);
-
+  const navigate = useNavigate()
   const [totalItems, setTotalItems] = useState();
   const [loading, setloading] = useState(false);
 
@@ -76,13 +77,18 @@ const VideoRecords = ({ tab }) => {
                 image,
                 avg_percent_view,
                 avg_view_duration,
-                status
+                status,
+                id
 
               },
               idx
             ) => {
               return (
-                <div key={idx}>
+                <div
+                onClick={() => {
+                  navigate(`/product${id}`)
+                }}
+                key={idx}>
                   <RecordWidgetB
                     image={image}
                     name={title}
