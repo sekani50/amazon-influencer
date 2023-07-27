@@ -37,11 +37,12 @@ const AmazonCaptcha = ({ setSuccess}) => {
       .then((res) => {
         setLoading(false)
         console.log(res.data);
-        toast.success('Verfication successful')
-        navigate(-1);
+        toast.success('Verification successful')
+        //navigate('/dashboard');
       })
       .catch((err) => {
         console.log(err);
+        
        // console.log(err.response.data?.response.messsage)
       // toast.error(err?.response?.data?.response?.messsage)
         console.log(err?.response.data?.response?.message)
@@ -57,8 +58,7 @@ const AmazonCaptcha = ({ setSuccess}) => {
         }
    
         console.log(err.response.data)
-       // setError(true)
-        //toast.error(err.response?.data?.response?.messsage)
+       
         setLoading(false)
       });
   };
@@ -85,6 +85,7 @@ const AmazonCaptcha = ({ setSuccess}) => {
       });
   }
   return (
+    <>
     <div className={`w-full h-fit let swipeIn `}>
     
       <div className=" mx-auto w-[95%] sm:w-[400px] flex flex-col items-center justify-center space-y-4">
@@ -126,6 +127,8 @@ const AmazonCaptcha = ({ setSuccess}) => {
         </button>
       </div>
     </div>
+    {isMailMessage && <div className="w-full h-full inset-0"></div>}
+    </>
   );
 };
 export default AmazonCaptcha;

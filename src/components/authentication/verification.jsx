@@ -32,7 +32,7 @@ const Verification = () => {
     await credentials(token, payload)
       .then((res) => {
        // console.log(res.data);
-       toast.success('Credentials Verified')
+       toast.success('Credentials Saved Successfully')
         const {captcha} = res.data;
        navigate("/verification/captcha")
         dispatch(getVerificationData({
@@ -42,9 +42,10 @@ const Verification = () => {
         setLoading(false)
       })
       .catch((err) => {
+        setLoading(false)
         console.log(err);
         toast.error(err.response.data?.response.messsage)
-        setLoading(false)
+       
       });
   };
   return (

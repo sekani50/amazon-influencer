@@ -50,7 +50,7 @@ const AmazonCredential = ({ setSuccess }) => {
         // console.log(res.data);
         const { captcha } = res.data;
         setSuccess(true);
-        toast.success("Credentials Verified");
+        toast.success("Credentials Saved Successfully");
         dispatch(
           getVerificationData({
             captcha,
@@ -60,9 +60,11 @@ const AmazonCredential = ({ setSuccess }) => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
-        toast.error(err.response.data?.response.messsage);
         setLoading(false);
+        console.log(err);
+        toast.error(err.message)
+        toast.error(err.response.data?.response.messsage);
+        
       });
   };
   return (
