@@ -76,7 +76,7 @@ const Login = () => {
           </div>
           <button
           onClick={() => {
-            navigate("/reset-password")
+            navigate("/forgot-password")
           }}
           className="text-[#005ABC] font-semibold">
             Forgot Password?

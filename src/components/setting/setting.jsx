@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Container from "../container/container";
 import Profile from "../manageaccount/profile";
 import Account from "../manageaccount/account";
+import AmazonVerification from "../manageaccount/amazonVerification";
 const Settings = () => {
   const [active, setactive] = useState(1);
   // const [tab, setTab] = useState("Profile");
@@ -38,6 +39,20 @@ const Settings = () => {
             >
               Account
             </span>
+
+            <span
+              onClick={() => {
+                setactive(2);
+                // setTab("Profile");
+              }}
+              className={`py-2 cursor-pointer ${
+                active === 2
+                  ? "border-b-[4px] border-[#005ABC] font-bold"
+                  : "font-semibold text-gray-500"
+              }`}
+            >
+              Amazon Verification
+            </span>
           </div>
         </div>
         
@@ -45,7 +60,7 @@ const Settings = () => {
        
        {active === 1 &&  <Account/>}
         {active === 0 && <Profile/>}
-              
+         {active === 2 && <AmazonVerification/>}     
       </div>
     </Container>
   );

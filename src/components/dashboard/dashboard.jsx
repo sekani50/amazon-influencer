@@ -38,7 +38,7 @@ const Dashboard = () => {
             </span>
           </div>
         </div>
-
+        
         {active === 0 && <VideoRecords tab={tab} />}
         {active === 1 && <ProductRecords tab={tab} />}
       </div>

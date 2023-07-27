@@ -25,7 +25,7 @@ const AnalysisCard = () => {
   return (
     <div className="w-[98%] mx-auto sm:w-[95%] h-full">
       <div className="dashboard-scroll-style w-full h-fit overflow-x-auto">
-        <div className="min-w-[1000px] rounded-2xl shadow-lg ">
+        <div className="min-w-[1080px] rounded-2xl shadow-lg ">
           <div className=" w-full grid gap-3 grid-cols-4 items-center h-[150px] p-3 bg-white">
             <div className="w-full flex flex-col items-center justify-center space-y-3 bg-white shadow-2xl rounded-2xl h-full px-4 py-2">
               <div className="flex items-center space-x-2 ">
@@ -36,7 +36,7 @@ const AnalysisCard = () => {
                 </div>
 
                 <span className="text-gray-500 whitespace-nowrap">
-                  Total Items Shipped Revenue
+                  Items Shipped Revenue
                 </span>
               </div>
               <div className="text-2xl">{data?.shipped_items_revenue|| '$0'}</div>

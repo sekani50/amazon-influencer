@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./index.css";
 import { Toaster } from "react-hot-toast";
 import Scrolltotop from "./components/UI/ScrollToTop";
-// import { RequireAuth } from "./Utils/RequireAuth";
+import { RequireAuth } from "./Utils/RequireAuth";
 import {
   Dashboard,
   Login,
@@ -18,9 +18,7 @@ import {
   //Userdetails,
   Verification,
   CaptchaAnswer,
-  ResetPassword,
-
-
+  ForgotPassword,
 } from "./Pages";
 
 const App = () => {
@@ -63,19 +61,53 @@ const App = () => {
            <Route exact path="/admin/products" element={<Product />} />
           <Route exact path="/admin/videos" element={<Videos />} />
           */}
-          <Route exact path="/verification/captcha" element={<CaptchaAnswer />} />
-          <Route exact path="/verification" element={<Verification />} />
-          <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route exact path="/product/:id" element={<RecordDetail />} />
-          <Route exact path="/setting" element={<Settings />} />
+
           <Route exact path="/subscription" element={<Subscription />} />
           <Route exact path="/payment" element={<SubPayment />} />
-          <Route exact path="/reset-password" element={<ResetPassword />} />
-         
-          
-         
-         
-         
+          <Route exact path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth link={"/"}>
+                <Dashboard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/verification/captcha"
+            element={
+              <RequireAuth link={"/"}>
+                <CaptchaAnswer />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/verification"
+            element={
+              <RequireAuth link={"/"}>
+                <Verification />
+              </RequireAuth>
+            }
+          />
+
+          <Route
+            path="/setting"
+            element={
+              <RequireAuth link={"/"}>
+                <Settings />
+              </RequireAuth>
+            }
+          />
+
+          <Route
+            path="/product/:id"
+            element={
+              <RequireAuth link={"/"}>
+                <RecordDetail />
+              </RequireAuth>
+            }
+          />
+
           {/**Protected routes */}
         </Routes>
       </Router>

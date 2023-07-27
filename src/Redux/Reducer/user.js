@@ -3,7 +3,10 @@ import * as type from "../Actions/Types";
 const initailState = {
   currentUser: null,
   token: "",
-  verificationData: null
+  verificationData: null,
+  isnotVerified: false,
+  message:'',
+  
 };
 const User = (state = initailState, action) => {
   switch (action.type) {
@@ -22,6 +25,17 @@ const User = (state = initailState, action) => {
           ...state,
           verificationData: action.payload,
         };
+        case type.NOT_VERIFIED:
+          return {
+            ...state,
+            isnotVerified: action.payload,
+          };
+       
+          case type.NOT_VERIFIED_MESSAGE:
+            return {
+              ...state,
+              message: action.payload,
+            };
     case type.LOGOUT:
       return {
         ...state,

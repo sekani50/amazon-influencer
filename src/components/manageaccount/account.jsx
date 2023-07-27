@@ -46,13 +46,13 @@ const Account = () => {
 
   }
     return (
-        <div className="w-full pb-10">
-        <div className="w-[90%] mx-auto sm:w-[400px] mb-4 space-y-4 flex flex-col justify-center items-center">
+        <div className="w-full pb-10 let swipeIn">
+        <div className="w-[95%] mx-auto sm:w-[400px] mb-4 space-y-4 flex flex-col justify-center items-center">
             <div className="sm:text-xl text-lg font-semibold"> Change Password</div>
 
             <div className="form-group space-y-4 w-full">
       <label className="block font-semibold " htmlFor="password">
-        Curent Password
+        Current Password
       </label>
       <input
         className="block form__input border-gray-200 border focus:border-gray-500 hover:border-gray-500 rounded-md focus:outline-none w-full h-11 px-4"

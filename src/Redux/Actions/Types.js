@@ -11,4 +11,6 @@ export const LOGOUT = "LOGOUT";
 export const GET_GALLERY_SUCCESS = "GET_GALLERY_SUCCESS";
 export const GET_JOB_SUCCESS = "GET_JOB_SUCCESS";
 export const VERIFY = "VERIFY";
+export const NOT_VERIFIED = 'NOT_VERIFIED';
+export const NOT_VERIFIED_MESSAGE = 'NOT_VERIFIED_MESSAGE';
 

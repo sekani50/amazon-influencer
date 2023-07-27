@@ -12,7 +12,7 @@ import SubPayment from "../components/subscriptionpayment/subPayment";
 import CaptchaAnswer from "../components/authentication/captchaAnswer";
 //import Userdetails from "../components/Admin/userdetiail";
 import Verification from "../components/authentication/verification";
-import ResetPassword from "../components/authentication/resetpassword/resetPassword";
+import ForgotPassword from "../components/authentication/resetpassword/forgotPassword";
 export {
   Register,
   Login,
@@ -28,6 +28,6 @@ export {
   //Userdetails,
   Verification,
   CaptchaAnswer,
-  ResetPassword,
+  ForgotPassword
   
 };

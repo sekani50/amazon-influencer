@@ -33,6 +33,7 @@ const ProductRecords = ({ tab }) => {
         .catch((err) => {
           setloading(false);
           console.log(err);
+          
         });
     }
 

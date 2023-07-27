@@ -29,6 +29,21 @@ const getVerificationData = (data) => {
   };
 };
 
+const notVerified = (bool) => {
+  return {
+    type: type.NOT_VERIFIED,
+    payload:bool
+  };
+};
+
+
+const notVerifiedMessage = (data) => {
+  return {
+    type: type.NOT_VERIFIED_MESSAGE,
+    payload:data
+  };
+};
+
 
 
 const getUser = (token) => {
@@ -54,12 +69,10 @@ const LoginAction = (loginParams, navigate, setLoading) => {
         .then((res) => {
           console.log(res.data)
           dispatch(GetUsersSuccess(res.data));
-          if(res.data.is_verified !== 'no') {
+       
              navigate("/dashboard");
-          }
-          else {
-            navigate("/verification")
-          }
+          
+          
 
         })
         .catch((err)=> {
@@ -114,5 +127,7 @@ export {
   loginSuccess,
   logout,
   getVerificationData,
+  notVerified,
+  notVerifiedMessage,
   
 };

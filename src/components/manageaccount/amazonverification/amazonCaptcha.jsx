@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoaderIcon } from "lucide-react";
 import { toast } from "react-hot-toast";
-import { MdNavigateBefore } from "react-icons/md";
-import { captchaAnswer } from "../../Utils/api";
+import { captchaAnswer } from "../../../Utils/api";
 import { useDispatch, useSelector } from "react-redux";
-import { credentials } from "../../Utils/api";
-import { getVerificationData } from "../../Redux/Actions/ActionCreators";
-const CaptchaAnswer = () => {
+import { credentials } from "../../../Utils/api";
+import { getVerificationData } from "../../../Redux/Actions/ActionCreators";
+
+const AmazonCaptcha = ({ setSuccess}) => {
   
   const { token, currentUser, verificationData } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -17,6 +17,11 @@ const CaptchaAnswer = () => {
   const [isError, setError] = useState(false)
   const [regenerating,setRegenerating] = useState(false)
 
+
+  const credential = {
+    email:currentUser?.email,
+    password: verificationData.password
+  };
   const handleSubmit = async () => {
     const payload = {
       answer,
@@ -33,36 +38,36 @@ const CaptchaAnswer = () => {
         setLoading(false)
         console.log(res.data);
         toast.success('Verfication successful')
-        navigate("/dashboard");
+        //navigate(-1);
       })
       .catch((err) => {
         console.log(err);
+       // console.log(err.response.data?.response.messsage)
+      // toast.error(err?.response?.data?.response?.messsage)
+        console.log(err?.response.data?.response?.message)
         if(err.response.data?.response?.captcha) {
-          dispatch(getVerificationData({
-              captcha: err?.response?.data?.response?.captcha,
-              password:verificationData?.password
-            }))
-            toast.error('Try captcha again')
-      }
-      else {
-          setError(true)
-      }
- 
-        toast.error(err.response.data?.response.messsage)
+            dispatch(getVerificationData({
+                captcha: err?.response?.data?.response?.captcha,
+                password:verificationData?.password
+              }))
+              toast.error('Try captcha again')
+        }
+        else {
+            setError(true)
+        }
+   
+        console.log(err.response.data)
+       // setError(true)
+        //toast.error(err.response?.data?.response?.messsage)
         setLoading(false)
       });
   };
 
 
  async function regenerate() {
-    const payload = {
-      email:currentUser?.email,
-      password: verificationData.password
-    };
-
-  
+    
     setRegenerating(true)
-    await credentials(token, payload)
+    await credentials(token, credential)
       .then((res) => {
        // console.log(res.data);
         const {captcha} = res.data;
@@ -80,17 +85,9 @@ const CaptchaAnswer = () => {
       });
   }
   return (
-    <div className="w-full h-full inset-0 fixed bg-white">
-      <div
-        onClick={() => {
-          navigate(-1);
-        }}
-        className="absolute top-3 left-3 cursor-pointer w-fit h-fit flex space-x-2 items-center"
-      >
-        <MdNavigateBefore className="text-[22px]" />
-        Back
-      </div>
-      <div className="absolute m-auto inset-0 w-[95%] sm:w-[400px] flex flex-col items-center justify-center space-y-4">
+    <div className={`w-full h-fit let swipeIn `}>
+    
+      <div className=" mx-auto w-[95%] sm:w-[400px] flex flex-col items-center justify-center space-y-4">
         <div className="sm:w-[350px] sm:h-[350px] h-[350px] w-full">
           <img src={verificationData?.captcha} alt="" className="w-full h-full object-fill" />
         </div>
@@ -131,5 +128,5 @@ const CaptchaAnswer = () => {
     </div>
   );
 };
-export default CaptchaAnswer;
+export default AmazonCaptcha;
 

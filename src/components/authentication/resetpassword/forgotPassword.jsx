@@ -7,7 +7,7 @@ import { LoaderIcon } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { MdNavigateBefore } from "react-icons/md";
 import { useSelector } from "react-redux";
-const ResetPassword = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const { token } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -49,12 +49,12 @@ const ResetPassword = () => {
           <img src={logo} alt="" className="w-full h-full" />
         </div>
         <div className="text-lg font-semibold sm:text-2xl">
-          Get Verification Code
+          Enter Your Email Address
         </div>
 
         <div className="form-group space-y-4 w-full">
           <label className="block font-semibold " htmlFor="email">
-            Enter Your Email Address
+            Get verification code
           </label>
           <input
             className="block form__input border border-gray-200 focus:border-gray-500 hover:border-gray-500 rounded-md focus:outline-none w-full h-11 px-4"
@@ -83,4 +83,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default ForgotPassword;

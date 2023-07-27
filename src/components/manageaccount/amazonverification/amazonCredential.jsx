@@ -1,19 +1,16 @@
 import React, { useState } from "react";
-import logo from "../../assets/png/logo.png";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { LoaderIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { credentials } from "../../Utils/api";
-import { MdNavigateBefore } from "react-icons/md";
-import { getVerificationData } from "../../Redux/Actions/ActionCreators";
-const Verification = () => {
+import { credentials } from "../../../Utils/api";
+import { getVerificationData } from "../../../Redux/Actions/ActionCreators";
+const AmazonCredential = ({ setSuccess}) => {
   const dispatch = useDispatch()
   const { currentUser, token } = useSelector((state) => state.user);
   const [email, setEmail] = useState(currentUser?.email);
 
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   
   const handleSubmit = async () => {
@@ -32,9 +29,9 @@ const Verification = () => {
     await credentials(token, payload)
       .then((res) => {
        // console.log(res.data);
-       toast.success('Credentials Verified')
         const {captcha} = res.data;
-       navigate("/verification/captcha")
+        setSuccess(true)
+        toast.success('Credentials Verified')
         dispatch(getVerificationData({
           captcha,
           password
@@ -48,19 +45,10 @@ const Verification = () => {
       });
   };
   return (
-    <div className="w-full h-full inset-0 fixed bg-white">
-        <div
-        onClick={() => {
-            navigate(-1)
-        }}
-        className="absolute top-3 left-3 cursor-pointer w-fit h-fit flex space-x-2 items-center">
-            <MdNavigateBefore className="text-[22px]"/>
-            Back
-        </div>
-      <div className="absolute m-auto inset-0 w-[95%] sm:w-[400px] flex flex-col items-center justify-center space-y-4">
-        <div className="sm:w-[64px] sm:h-[64px] h-[40px] w-[40px]">
-          <img src={logo} alt="" className="w-full h-full" />
-        </div>
+    <div className={`w-full h-fit let swipeIn `}>
+       
+      <div className=" mx-auto w-[95%] sm:w-[400px] flex flex-col items-center justify-center space-y-4">
+       
         <div className="text-lg font-semibold sm:text-2xl">Enter Your Amazon Credentials</div>
 
         <div className="form-group space-y-4 w-full">
@@ -101,7 +89,7 @@ const Verification = () => {
           {loading ? (
             <LoaderIcon className="text-base animate-spin" />
           ) : (
-            "Save Changes"
+            "Save Credentials"
           )}
         </button>
       </div>
@@ -109,4 +97,4 @@ const Verification = () => {
   );
 };
 
-export default Verification;
+export default AmazonCredential;
