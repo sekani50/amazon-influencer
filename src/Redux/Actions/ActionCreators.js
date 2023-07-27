@@ -104,8 +104,8 @@ const LoginAction = (loginParams, navigate, setLoading, tokens) => {
       .catch((error) => {
         setLoading(false);
         console.log(error);
-        console.log(error.response.data.error.message);
-        toast.error(error.response.data.error.message);
+        const {message} = error.response.data.response
+        toast.error(message)
       });
   };
 };
@@ -132,7 +132,8 @@ const registration = (registrationParams, navigate, setLoading) => {
       .catch((error) => {
         setLoading(false);
         //console.log(error.response.data.error.message);
-        toast.error(error.response.data.error.message);
+        const {message} = error.response.data.response
+        toast.error(message)
       });
   };
 };

@@ -15,7 +15,7 @@ const AmazonCredential = ({ setSuccess }) => {
   const [email, setEmail] = useState(credential?.key);
   const [password, setPassword] = useState(credential?.value);
   const [loading, setLoading] = useState(false);
-
+ 
   useEffect(() => {
     async function fetchStatus() {
       await getCredentials(token)
@@ -25,6 +25,7 @@ const AmazonCredential = ({ setSuccess }) => {
         })
         .catch((err) => {
           console.log(err);
+
         });
     }
 
@@ -63,7 +64,8 @@ const AmazonCredential = ({ setSuccess }) => {
         setLoading(false);
         console.log(err);
         toast.error(err.message)
-        toast.error(err.response.data?.response.messsage);
+        const {message} = err.response.data.response
+        toast.error(message)
         
       });
   };

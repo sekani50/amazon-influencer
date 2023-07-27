@@ -6,7 +6,8 @@ const initailState = {
   verificationData: null,
   isnotVerified: false,
   message: "",
-  credential:null
+  credential:null,
+  
 };
 const User = (state = initailState, action) => {
   switch (action.type) {

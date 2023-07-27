@@ -21,10 +21,13 @@ import {
   ForgotPassword,
 } from "./Pages";
 
+
 const App = () => {
   return (
     <div className="w-full h-full text-sm sm:text-[15px] font text-zinc-700">
+      
       <div>
+      
         <Toaster
           toastOptions={{
             duration: 5000,
@@ -49,6 +52,7 @@ const App = () => {
       </div>
       <Router>
         <Scrolltotop />
+        
         <Routes>
           {/*    AUTH PAGE */}
 

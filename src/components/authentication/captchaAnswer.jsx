@@ -37,6 +37,8 @@ const CaptchaAnswer = () => {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false)
+        toast.error(err.message)
         if(err.response.data?.response?.captcha) {
           dispatch(getVerificationData({
               captcha: err?.response?.data?.response?.captcha,
@@ -48,8 +50,10 @@ const CaptchaAnswer = () => {
           setError(true)
       }
  
-        toast.error(err.response.data?.response.messsage)
-        setLoading(false)
+      const {message} = err.response.data.response
+      toast.error(message)
+        
+        
       });
   };
 
@@ -74,9 +78,12 @@ const CaptchaAnswer = () => {
       })
       .catch((err) => {
         console.log(err);
-        toast.error(err.response.data?.response.messsage)
-        //toast.error(err.response.data.error)
         setRegenerating(false)
+        toast.error(err.message)
+        const {message} = err.response.data.response
+        toast.error(message)
+        //toast.error(err.response.data.error)
+       
       });
   }
   return (

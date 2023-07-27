@@ -19,7 +19,7 @@ const VerifyModal = () => {
         e.stopPropagation()
        
       }}
-      className="w-[350px] items-center justify-center flex flex-col inset-0 m-auto absolute h-fit bg-white rounded-lg py-6 px-4 space-y-5">
+      className="w-[95%] sm:w-[350px] items-center justify-center flex flex-col inset-0 m-auto absolute h-fit bg-white rounded-lg py-6 px-4 space-y-5">
         <div className="text-red-500 font-medium text-center ">{message}</div>
         <button
           onClick={() => {

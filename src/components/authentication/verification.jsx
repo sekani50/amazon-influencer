@@ -42,9 +42,11 @@ const Verification = () => {
         setLoading(false)
       })
       .catch((err) => {
-        setLoading(false)
+         setLoading(false)
         console.log(err);
-        toast.error(err.response.data?.response.messsage)
+        toast.error(err.message)
+        const {message} = err.response.data.response
+        toast.error(message)
        
       });
   };
