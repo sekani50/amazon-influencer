@@ -4,12 +4,13 @@ import { LoaderIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { credentials } from "../../../Utils/api";
 import { getVerificationData } from "../../../Redux/Actions/ActionCreators";
+import Switch from "../../UI/switch";
 const AmazonCredential = ({ setSuccess}) => {
   const dispatch = useDispatch()
-  const { currentUser, token } = useSelector((state) => state.user);
-  const [email, setEmail] = useState(currentUser?.email);
+  const { token, credential } = useSelector((state) => state.user);
+  const [email, setEmail] = useState(credential?.email);
 
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(credential?.value);
 
   const [loading, setLoading] = useState(false);
   
@@ -61,6 +62,7 @@ const AmazonCredential = ({ setSuccess}) => {
             placeholder="name@company.com"
             name="email"
             value={email}
+            readOnly={credential?.status}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -75,6 +77,7 @@ const AmazonCredential = ({ setSuccess}) => {
             type="password"
             placeholder="********"
             name="password"
+            readOnly={credential?.status}
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -83,6 +86,7 @@ const AmazonCredential = ({ setSuccess}) => {
         </div>
 
         <button
+        disabled={credential?.status}
           onClick={handleSubmit}
           className="w-full h-[45px] bg-[#005ABC] font-semibold rounded-lg text-white flex justify-center items-center space-x-2"
         >
@@ -93,6 +97,18 @@ const AmazonCredential = ({ setSuccess}) => {
           )}
         </button>
       </div>
+
+      <div className="w-full mt-[4rem] sm:mt-[7rem]">
+        <div className="py-3 px-2 border-t-2 border-gray-500 border-b-2">
+            <div className="flex w-full justify-between items-center">
+                <div className="space-y-2">
+                    <div className="font-semibold">Status</div>
+                    <div className={`text-[12px] sm:text-sm ${credential?.status ? 'text-green-500' : 'text-red-500'} `}>{credential?.status ? 'Verified' : 'Not verified'}</div>
+                </div>
+                <Switch/>
+            </div>
+        </div>
+        </div>
     </div>
   );
 };

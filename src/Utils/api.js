@@ -106,3 +106,13 @@ export const sendMail = (token, payload) => {
     },
   })
 }
+
+
+// 
+export const getCredentials = (token) => {
+  return axios.get('/associate/credentials', {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+}

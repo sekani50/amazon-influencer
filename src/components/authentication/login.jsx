@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import logo from "../../assets/png/logo.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LoginAction } from "../../Redux/Actions/ActionCreators";
 import { LoaderIcon } from "lucide-react";
 const Login = () => {
   const [email, setEmail] = useState("");
+  const {credential} = useSelector((state) => state.user)
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
@@ -26,7 +27,7 @@ const Login = () => {
         return
       }
      }
-    dispatch(LoginAction(payload, navigate, setLoading))
+    dispatch(LoginAction(payload, navigate, setLoading, credential?.status))
   };
   return (
     <div className="w-full h-full inset-0 fixed bg-white">
@@ -84,7 +85,7 @@ const Login = () => {
         </div>
         <button
           onClick={handleSubmit}
-          className="w-full py-3 bg-[#005ABC] font-semibold rounded-lg text-white flex justify-center items-center space-x-2"
+          className="w-full h-[45px] bg-[#005ABC] font-semibold rounded-lg text-white flex justify-center items-center space-x-2"
         >
           {loading ? <LoaderIcon  className="text-base animate-spin" /> : "Log in"}
         </button>

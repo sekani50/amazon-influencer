@@ -5,8 +5,8 @@ const initailState = {
   token: "",
   verificationData: null,
   isnotVerified: false,
-  message:'',
-  
+  message: "",
+  credential:null
 };
 const User = (state = initailState, action) => {
   switch (action.type) {
@@ -20,27 +20,37 @@ const User = (state = initailState, action) => {
         ...state,
         currentUser: action.payload,
       };
-      case type.VERIFY:
+
+    case type.VERIFY:
+      return {
+        ...state,
+        verificationData: action.payload,
+      };
+    case type.NOT_VERIFIED:
+      return {
+        ...state,
+        isnotVerified: action.payload,
+      };
+
+    case type.NOT_VERIFIED_MESSAGE:
+      return {
+        ...state,
+        message: action.payload,
+      };
+        
+      case type.VERIFICATION_CREDENTIALS:
         return {
           ...state,
-          verificationData: action.payload,
+          credential: action.payload,
         };
-        case type.NOT_VERIFIED:
-          return {
-            ...state,
-            isnotVerified: action.payload,
-          };
-       
-          case type.NOT_VERIFIED_MESSAGE:
-            return {
-              ...state,
-              message: action.payload,
-            };
     case type.LOGOUT:
       return {
         ...state,
         currentUser: null,
         token: "",
+        verificationData: null,
+        isnotVerified: false,
+        message: "",
       };
 
     default:

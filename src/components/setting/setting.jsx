@@ -4,7 +4,7 @@ import Profile from "../manageaccount/profile";
 import Account from "../manageaccount/account";
 import AmazonVerification from "../manageaccount/amazonVerification";
 const Settings = () => {
-  const [active, setactive] = useState(1);
+  const [active, setactive] = useState(2);
   // const [tab, setTab] = useState("Profile");
 
 

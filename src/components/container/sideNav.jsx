@@ -4,12 +4,19 @@ import { BiHome, BiLogOutCircle } from "react-icons/bi";
 import { BsCalendar2Minus } from "react-icons/bs";
 //import profile from "../../assets/png/hijaby.jpg";
 import { IoSettingsOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const SideNav = ({ isNav, setisNav }) => {
   const {currentUser} = useSelector((state) => state.user)
   const { pathname } = useLocation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  function handleLogout() {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+  }
+
   return (
     <div
       onClick={(e) => {
@@ -87,13 +94,13 @@ const SideNav = ({ isNav, setisNav }) => {
             <span>Settings</span>
           </Link>
 
-          <Link
-            to="/logout"
+          <div
+            onClick={handleLogout}
             className={`relative flex mt-[20%] space-x-3 justify-start items-center px-3 py-2 font-medium bg-red-600 bg-opacity-[0.15] rounded-lg text-red-500`}
           >
             <BiLogOutCircle className="text-[25px] " />
             <span>Log out</span>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

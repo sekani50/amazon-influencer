@@ -22,66 +22,82 @@ const logout = () => {
   };
 };
 
+const getVerificationCredential = (data) => {
+  return {
+    type: type.VERIFICATION_CREDENTIALS,
+    payload: data,
+  };
+};
+
 const getVerificationData = (data) => {
   return {
     type: type.VERIFY,
-    payload:data
+    payload: data,
   };
 };
 
 const notVerified = (bool) => {
   return {
     type: type.NOT_VERIFIED,
-    payload:bool
+    payload: bool,
   };
 };
-
 
 const notVerifiedMessage = (data) => {
   return {
     type: type.NOT_VERIFIED_MESSAGE,
-    payload:data
+    payload: data,
   };
 };
-
-
 
 const getUser = (token) => {
   return axios.get("/profile", {
     headers: {
-      Authorization: "Bearer " + token
-    }
-  })
-}
+      Authorization: "Bearer " + token,
+    },
+  });
+};
 
-const LoginAction = (loginParams, navigate, setLoading) => {
+const LoginAction = (loginParams, navigate, setLoading, tokens) => {
   return async (dispatch) => {
     setLoading(true);
     await axios
       .post("/login", loginParams)
       .then(async (res) => {
         console.log(res.data);
-       
+        if (tokens) {
+          navigate("/dashboard");
+          
+        } else {
+          navigate("/verification");
+        }
 
-        const { token } = res.data
+        const { token } = res.data;
         dispatch(loginSuccess(token));
+
         await getUser(token)
-        .then((res) => {
-          console.log(res.data)
-          dispatch(GetUsersSuccess(res.data));
-       
-             navigate("/dashboard");
-          
-          
-
-        })
-        .catch((err)=> {
-          console.log(err)
-        })
-
+          .then((res) => {
+            console.log(res.data);
+            dispatch(GetUsersSuccess(res.data));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        await axios
+          .get("/associate/credentials", {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          })
+          .then((res) => {
+             dispatch(getVerificationCredential(res.data))
+          })
+          .catch((err) => {
+            console.log(err);
+          });
         console.log(token);
         //console.log(admin);
-       // navigate("/dashboard");
+        // navigate("/dashboard");
         setLoading(false);
         toast.success("Login successful");
       })
@@ -102,11 +118,11 @@ const registration = (registrationParams, navigate, setLoading) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-        }
+        },
       })
       .then((res) => {
         console.log(res.data);
-       
+
         dispatch(GetUsersSuccess(res.data));
         dispatch(loginSuccess(res.data.token));
         toast.success("Registration Successful");
@@ -129,5 +145,5 @@ export {
   getVerificationData,
   notVerified,
   notVerifiedMessage,
-  
+  getVerificationCredential,
 };
