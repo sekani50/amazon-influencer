@@ -5,12 +5,8 @@ import RecordDetail from "../components/recorddetail/recordDetail";
 import Settings from "../components/setting/setting";
 import Subscription from "../components/subscription/subscription";
 import SubPayment from "../components/subscriptionpayment/subPayment";
-//import Overview from "../components/Admin/dashboard";
-//import UserManagement from "../components/Admin/users";
-//import Product from "../components/Admin/product";
-//import Videos from "../components/Admin/videos";
 import CaptchaAnswer from "../components/authentication/captchaAnswer";
-//import Userdetails from "../components/Admin/userdetiail";
+import AdminDashboard from "../components/admin/dashboard";
 import Verification from "../components/authentication/verification";
 import ForgotPassword from "../components/authentication/resetpassword/forgotPassword";
 export {
@@ -21,13 +17,9 @@ export {
   Settings,
   Subscription,
   SubPayment,
-  //Overview,
-  //UserManagement,
-  //Product,
- // Videos,
-  //Userdetails,
   Verification,
   CaptchaAnswer,
-  ForgotPassword
+  ForgotPassword,
+  AdminDashboard
   
 };
