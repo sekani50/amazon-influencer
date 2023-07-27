@@ -58,13 +58,7 @@ const App = () => {
 
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
-          {/*    LANDING PAGE 
-        
-           
-          <Route exact path="/admin/dashboard" element={<Overview />} />
-           <Route exact path="/admin/products" element={<Product />} />
-         
-          */}
+          {/*    LANDING PAGE  */}
           <Route exact path="/admin/user/:id" element={<Userdetails />} />
             <Route exact path="/admin/users" element={<UserManagement />} />
           <Route exact path="/admin/dashboard" element={<AdminDashboard />} />

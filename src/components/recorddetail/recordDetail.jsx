@@ -13,6 +13,7 @@ import empty from "../../assets/png/emptyorder.png"
 import RecordWidgetC from "../recordwidget/recordWidgetc";
 import { toast } from "react-hot-toast";
 import { notVerified, notVerifiedMessage } from "../../Redux/Actions/ActionCreators";
+import VideoAnalysis from "../card/videoAnalysis";
 const RecordDetail = () => {
   const {id} = useParams()
   const navigate = useNavigate()
@@ -67,6 +68,11 @@ const RecordDetail = () => {
         </div>
 
         <SingularCard loading={loading} views={data?.views } avgPercentView={`${data?.avg_percent_view}` } avgViewDuration={`${data?.avg_view_duration}`}/>
+        <div className="w-full space-y-4">
+        <h3 className="text-lg sm:text-2xl">Video Sales</h3>
+          <VideoAnalysis url={data?.video} />
+        </div>
+       
         <div className="w-full mx-auto">
         <div className="dashboard-scroll-style w-full h-fit overflow-x-auto">
       <div className="w-full min-w-[1000px] space-y-3">

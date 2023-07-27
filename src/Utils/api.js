@@ -55,8 +55,8 @@ export const getVideos = (token, page) => {
 }
 
 ///video-sales
-export const getVideoSales = (token) => {
-  return axios.post('/video-sales', {
+export const getVideoSales = (token, url) => {
+  return axios.post('/video-sales', url, {
     headers: {
       Authorization: "Bearer " + token,
     },
