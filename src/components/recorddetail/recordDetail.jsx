@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Container from "../container/container";
 import profile from "../../assets/png/customerpic.png";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import SingularCard from "./singleproductcard/singularCard";
 import { useNavigate, useParams } from "react-router-dom";
@@ -11,12 +11,14 @@ import { useState } from "react";
 import { LoaderIcon } from "lucide-react";
 import empty from "../../assets/png/emptyorder.png"
 import RecordWidgetC from "../recordwidget/recordWidgetc";
-
+import { toast } from "react-hot-toast";
+import { notVerified, notVerifiedMessage } from "../../Redux/Actions/ActionCreators";
 const RecordDetail = () => {
   const {id} = useParams()
   const navigate = useNavigate()
   const { token } = useSelector((state) => state.user);
   const [data, setdata] = useState(null)
+  const dispatch = useDispatch()
   const [loading, setloading] = useState(false)
 
   useEffect(() => {
@@ -31,6 +33,13 @@ const RecordDetail = () => {
       })
       .catch((err) => {
         console.log(err)
+        console.log(err.response.data?.error?.message)
+        if(err.response.data?.error?.message) {
+          dispatch(notVerifiedMessage(err.response.data?.error?.message))
+          dispatch(notVerified(true))
+          toast.error('Verification required. Go to Settings')
+        }
+        
       })
     }
 
