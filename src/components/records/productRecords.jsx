@@ -3,13 +3,16 @@ import { FiImage } from "react-icons/fi";
 import RecordWidget from "../recordwidget/recordWidget";
 import { useEffect, useState } from "react";
 import { getProducts } from "../../Utils/api";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LoaderIcon } from 'lucide-react'
+import { toast } from "react-hot-toast";
+import { notVerified, notVerifiedMessage } from "../../Redux/Actions/ActionCreators";
 import empty from "../../assets/png/emptyorder.png";
 const ProductRecords = ({ tab }) => {
   const { token } = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
   const [data, setdata] = useState([]);
+  const dispatch = useDispatch()
 
   const [totalItems, setTotalItems] = useState();
   const [loading, setloading] = useState(false);
@@ -33,6 +36,12 @@ const ProductRecords = ({ tab }) => {
         .catch((err) => {
           setloading(false);
           console.log(err);
+          console.log(err.response.data?.error?.message)
+          if(err.response.data?.error?.message) {
+            dispatch(notVerifiedMessage(err.response.data?.error?.message))
+            dispatch(notVerified(true))
+            toast.error('Verification required. Go to Settings')
+          }
           
         });
     }

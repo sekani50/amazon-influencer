@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import SideNav from "./sideNav";
 import TopNav from "./topNav";
+import VerifyModal from "../verify/verifyModal";
 const Container = ({ children }) => {
   const [isNav, setisNav] = useState(false);
   return (
+    <>
     <div className="w-full h-full pb-[50px]  bg-gray-50 text-zinc-700">
       <TopNav isNav={isNav} setisNav={setisNav} />
 
@@ -12,6 +14,8 @@ const Container = ({ children }) => {
       </div>
       <SideNav isNav={isNav} setisNav={setisNav} />
     </div>
+    <VerifyModal/>
+    </>
   );
 };
 

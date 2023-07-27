@@ -1,17 +1,20 @@
 import React from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LoaderIcon } from 'lucide-react'
 import empty from "../../assets/png/emptyorder.png";
 import { useEffect, useState } from "react";
 import { getVideos } from "../../Utils/api";
 import RecordWidgetB from "../recordwidget/recordWidgetb";
+import { notVerified, notVerifiedMessage } from "../../Redux/Actions/ActionCreators";
+import { toast } from "react-hot-toast";
 const VideoRecords = ({ tab }) => {
   const { token } = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
   const [data, setdata] = useState([]);
   const [totalItems, setTotalItems] = useState();
   const [loading, setloading] = useState(false);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     async function fetchVideo() {
@@ -32,6 +35,14 @@ const VideoRecords = ({ tab }) => {
         .catch((err) => {
           setloading(false);
           console.log(err);
+          console.log(err.response.data?.response)
+          console.log(err.response.data?.error?.message)
+          if(err.response.data?.error?.message) {
+            dispatch(notVerifiedMessage(err.response.data?.error?.message))
+            dispatch(notVerified(true))
+            toast.error('Verification required. Go to Settings')
+          }
+        
         });
     }
 

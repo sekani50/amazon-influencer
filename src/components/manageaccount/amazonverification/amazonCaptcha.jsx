@@ -38,7 +38,7 @@ const AmazonCaptcha = ({ setSuccess}) => {
         setLoading(false)
         console.log(res.data);
         toast.success('Verfication successful')
-        //navigate(-1);
+        navigate(-1);
       })
       .catch((err) => {
         console.log(err);
