@@ -2,18 +2,36 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { LoaderIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { credentials } from "../../../Utils/api";
-import { getVerificationData } from "../../../Redux/Actions/ActionCreators";
+import { credentials, getCredentials } from "../../../Utils/api";
+import {
+  getVerificationCredential,
+  getVerificationData,
+} from "../../../Redux/Actions/ActionCreators";
 import Switch from "../../UI/switch";
-const AmazonCredential = ({ setSuccess}) => {
-  const dispatch = useDispatch()
+import { useEffect } from "react";
+const AmazonCredential = ({ setSuccess }) => {
+  const dispatch = useDispatch();
   const { token, credential } = useSelector((state) => state.user);
-  const [email, setEmail] = useState(credential?.email);
-
+  const [email, setEmail] = useState(credential?.key);
   const [password, setPassword] = useState(credential?.value);
-
   const [loading, setLoading] = useState(false);
-  
+
+  useEffect(() => {
+    async function fetchStatus() {
+      await getCredentials(token)
+        .then((res) => {
+          console.log(res);
+          dispatch(getVerificationCredential(res.data));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    fetchStatus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleSubmit = async () => {
     const payload = {
       email,
@@ -26,31 +44,33 @@ const AmazonCredential = ({ setSuccess}) => {
         return;
       }
     }
-    setLoading(true)
+    setLoading(true);
     await credentials(token, payload)
       .then((res) => {
-       // console.log(res.data);
-        const {captcha} = res.data;
-        setSuccess(true)
-        toast.success('Credentials Verified')
-        dispatch(getVerificationData({
-          captcha,
-          password
-        }))
-        setLoading(false)
+        // console.log(res.data);
+        const { captcha } = res.data;
+        setSuccess(true);
+        toast.success("Credentials Verified");
+        dispatch(
+          getVerificationData({
+            captcha,
+            password,
+          })
+        );
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
-        toast.error(err.response.data?.response.messsage)
-        setLoading(false)
+        toast.error(err.response.data?.response.messsage);
+        setLoading(false);
       });
   };
   return (
     <div className={`w-full h-fit let swipeIn `}>
-       
       <div className=" mx-auto w-[95%] sm:w-[400px] flex flex-col items-center justify-center space-y-4">
-       
-        <div className="text-lg font-semibold sm:text-2xl">Enter Your Amazon Credentials</div>
+        <div className="text-lg font-semibold sm:text-2xl">
+          Enter Your Amazon Credentials
+        </div>
 
         <div className="form-group space-y-4 w-full">
           <label className="block font-semibold " htmlFor="email">
@@ -86,7 +106,7 @@ const AmazonCredential = ({ setSuccess}) => {
         </div>
 
         <button
-        disabled={credential?.status}
+          disabled={credential?.status}
           onClick={handleSubmit}
           className="w-full h-[45px] bg-[#005ABC] font-semibold rounded-lg text-white flex justify-center items-center space-x-2"
         >
@@ -100,15 +120,21 @@ const AmazonCredential = ({ setSuccess}) => {
 
       <div className="w-full mt-[4rem] sm:mt-[7rem]">
         <div className="py-3 px-2 border-t-2 border-gray-500 border-b-2">
-            <div className="flex w-full justify-between items-center">
-                <div className="space-y-2">
-                    <div className="font-semibold">Status</div>
-                    <div className={`text-[12px] sm:text-sm ${credential?.status ? 'text-green-500' : 'text-red-500'} `}>{credential?.status ? 'Verified' : 'Not verified'}</div>
-                </div>
-                <Switch/>
+          <div className="flex w-full justify-between items-center">
+            <div className="space-y-2">
+              <div className="font-semibold">Status</div>
+              <div
+                className={`text-[12px] sm:text-sm ${
+                  credential?.status ? "text-green-500" : "text-red-500"
+                } `}
+              >
+                {credential?.status ? "Verified" : "Not verified"}
+              </div>
             </div>
+            <Switch />
+          </div>
         </div>
-        </div>
+      </div>
     </div>
   );
 };
