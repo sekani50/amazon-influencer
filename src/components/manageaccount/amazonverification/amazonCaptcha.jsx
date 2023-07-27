@@ -8,7 +8,7 @@ import { credentials } from "../../../Utils/api";
 import { getVerificationData } from "../../../Redux/Actions/ActionCreators";
 
 const AmazonCaptcha = ({ setSuccess}) => {
-  
+  const [isMailMessage, setMailMessage ] = useState()
   const { token, currentUser, verificationData } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -37,6 +37,9 @@ const AmazonCaptcha = ({ setSuccess}) => {
       .then((res) => {
         setLoading(false)
         console.log(res.data);
+        if (res.data.message) {
+          setMailMessage(res.data.message)
+        }
         toast.success('Verification successful')
         //navigate('/dashboard');
       })
