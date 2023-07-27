@@ -15,6 +15,10 @@ import {
   CaptchaAnswer,
   ForgotPassword,
   AdminDashboard,
+  AdminVideos,
+  AdminProducts,
+  UserManagement,
+  Userdetails,
 } from "./Pages";
 
 
@@ -55,13 +59,17 @@ const App = () => {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
           {/*    LANDING PAGE 
-          <Route exact path="/admin/users" element={<UserManagement />} />
-           <Route exact path="/admin/user/:id" element={<Userdetails />} />
+        
+           
           <Route exact path="/admin/dashboard" element={<Overview />} />
            <Route exact path="/admin/products" element={<Product />} />
-          <Route exact path="/admin/videos" element={<Videos />} />
+         
           */}
+          <Route exact path="/admin/user/:id" element={<Userdetails />} />
+            <Route exact path="/admin/users" element={<UserManagement />} />
           <Route exact path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route exact path="/admin/videos" element={<AdminVideos />} />
+          <Route exact path="/admin/products" element={<AdminProducts />} />
           <Route exact path="/subscription" element={<Subscription />} />
           <Route exact path="/payment" element={<SubPayment />} />
           <Route exact path="/forgot-password" element={<ForgotPassword />} />

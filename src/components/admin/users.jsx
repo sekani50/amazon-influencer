@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 function UserManagement() {
   const [actions, setAction] = useState(null);
   return (
-    <div>
       <Container>
         <div className="w-full h-full px-2  sm:px-6 bg-white pt-4 sm:pt-16">
           <h1 className="text-xl font-bold">Users</h1>
@@ -74,7 +73,6 @@ function UserManagement() {
           ))}
         </div>
       </Container>
-    </div>
   );
 }
 
