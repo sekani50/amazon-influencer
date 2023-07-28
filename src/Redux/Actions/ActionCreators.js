@@ -58,20 +58,14 @@ const getUser = (token) => {
   });
 };
 
-const LoginAction = (loginParams, navigate, setLoading, tokens) => {
+const LoginAction = (loginParams, navigate, setLoading) => {
   return async (dispatch) => {
     setLoading(true);
     await axios
       .post("/login", loginParams)
       .then(async (res) => {
         console.log(res.data);
-        if (tokens) {
           navigate("/dashboard");
-          
-        } else {
-          navigate("/verification");
-        }
-
         const { token } = res.data;
         dispatch(loginSuccess(token));
 
@@ -104,9 +98,13 @@ const LoginAction = (loginParams, navigate, setLoading, tokens) => {
       .catch((error) => {
         setLoading(false);
         console.log(error);
-        toast.error(error.message)
-        const {message} = error.response.data.response
+        if (error.message === 'Network Error') {
+          toast.error('Network Error')
+        }
+        const {message} = error.response.data.error
         toast.error(message)
+        const {message:mm} = error.response.data.response
+        toast.error(mm)
       });
   };
 };
@@ -127,15 +125,20 @@ const registration = (registrationParams, navigate, setLoading) => {
         dispatch(GetUsersSuccess(res.data));
         dispatch(loginSuccess(res.data.token));
         toast.success("Registration Successful");
-        navigate("/verification");
+        navigate("/dashboard");
         setLoading(false);
       })
       .catch((error) => {
         setLoading(false);
-        toast.error(error.message)
-        //console.log(error.response.data.error.message);
-        const {message} = error.response.data.response
+        if (error.message === 'Network Error') {
+          toast.error('Network Error')
+        }
+        console.log(error.response.data)
+        const {message} = error.response.data.error
         toast.error(message)
+        //console.log(error.response.data.error.message);
+        const {message: mm} = error.response.data.response
+        toast.error(mm)
       });
   };
 };

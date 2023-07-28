@@ -1,33 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import logo from "../../assets/png/logo.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
-import { LoginAction, getVerificationCredential } from "../../Redux/Actions/ActionCreators";
+import { useDispatch} from "react-redux";
+import { LoginAction } from "../../Redux/Actions/ActionCreators";
 import { LoaderIcon } from "lucide-react";
-import { getCredentials } from "../../Utils/api";
 const Login = () => {
   const [email, setEmail] = useState("");
-  const {token, credential} = useSelector((state) => state.user)
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
 
-
-  useEffect(() => {
-   async function fetchCredential() {
-      await getCredentials(token)
-      .then((res) => {
-        dispatch(getVerificationCredential(res.data))
-      }) 
-      .catch((err) => {
-        console.log(err)
-      })
-    }
-    fetchCredential()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
 
   const handleSubmit = () => {
      const payload = {
@@ -42,7 +26,7 @@ const Login = () => {
         return
       }
      }
-    dispatch(LoginAction(payload, navigate, setLoading, credential?.status))
+    dispatch(LoginAction(payload, navigate, setLoading))
   };
   return (
     <div className="w-full h-full inset-0 fixed bg-white">

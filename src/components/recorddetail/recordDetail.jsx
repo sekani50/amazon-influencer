@@ -69,7 +69,7 @@ const RecordDetail = () => {
 
         <SingularCard loading={loading} views={data?.views } avgPercentView={`${data?.avg_percent_view}` } avgViewDuration={`${data?.avg_view_duration}`}/>
         <div className="w-full space-y-4">
-        <h3 className="text-lg sm:text-2xl">Video Sales</h3>
+        <h3 className="text-lg font-medium sm:text-xl">Video Sales</h3>
           <VideoAnalysis url={data?.video} />
         </div>
        
