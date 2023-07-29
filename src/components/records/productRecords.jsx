@@ -1,7 +1,7 @@
 import React from "react";
 import { FiImage } from "react-icons/fi";
 import RecordWidget from "../recordwidget/recordWidget";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getProducts } from "../../Utils/api";
 import { useDispatch, useSelector } from "react-redux";
 import { LoaderIcon } from 'lucide-react'
@@ -9,18 +9,19 @@ import { toast } from "react-hot-toast";
 //import { useLocation } from "react-router-dom";
 import { notVerified, notVerifiedMessage } from "../../Redux/Actions/ActionCreators";
 import empty from "../../assets/png/emptyorder.png";
+import { ProductContext } from "../../App";
 const ProductRecords = ({ tab }) => {
   const { token } = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
-  const [data, setdata] = useState([]);
+  //const [data, setdata] = useState([]);
   const dispatch = useDispatch()
-  const [totalItems, setTotalItems] = useState();
+ // const [totalItems, setTotalItems] = useState('');
   const [loading, setloading] = useState(false);
+  const {setproductdata , productdata, totalproduct, settotalproduct} = useContext(ProductContext)
   
-
-
   useEffect(() => {
-      
+    if(productdata.length > 0) return
+ 
     async function fetchVideo() {
       setloading(true);
       await getProducts(token, { page })
@@ -28,14 +29,15 @@ const ProductRecords = ({ tab }) => {
           console.log(res.data);
           setloading(false);
           const { items, totalItems } = res.data;
+          setproductdata(items)
           //dispatch(userProducts(items))
-         setdata(items);
+         //setdata(items);
           const totalPage = Math.ceil(totalItems / 10);
           const pageNumbers = [...Array(totalPage).keys()].map(
             (page) => page + 1
           );
 
-          setTotalItems(pageNumbers);
+          settotalproduct(pageNumbers);
         })
         .catch((err) => {
           setloading(false);
@@ -76,7 +78,7 @@ const ProductRecords = ({ tab }) => {
             </div>
           </div>
         )}
-        {!loading && data?.length === 0 && (
+        {!loading && productdata?.length === 0 && (
           <div className="w-full h-[300px] flex justify-center items-center">
             <span className="w-[200px] h-[200px]">
               <img className="w-full h-full" src={empty} alt="" />
@@ -84,8 +86,8 @@ const ProductRecords = ({ tab }) => {
           </div>
         )}
         {!loading &&
-          data?.length > 0 &&
-          data?.map(
+          productdata?.length > 0 &&
+          productdata?.map(
             (
               {
                 name,
@@ -116,10 +118,10 @@ const ProductRecords = ({ tab }) => {
       </div>
      
     </div>
-     {totalItems && (
+     {totalproduct && (
       <div className="mt-8 w-full">
         <div className="flex justify-center space-x-1 items-center">
-          {totalItems?.map((pagenumber, idx) => {
+          {totalproduct?.map((pagenumber, idx) => {
             return (
               <button
                 onClick={() => {

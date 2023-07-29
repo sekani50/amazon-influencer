@@ -1,18 +1,21 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { useEffect } from "react";
 import { MdShowChart, MdOutlineScale, MdShoppingBasket } from "react-icons/md";
 import { getVideoMetric } from "../../Utils/api";
 import { useSelector } from "react-redux";
+import { VideoContext } from "../../App";
 
 const AnalysisCardB = () => {
   const {token} = useSelector((state) => state.user)
-  const [data, setdata] = useState()
+ // const [videometric, setvideometric] = useState('')
+  const {videometric, setvideometric} = useContext(VideoContext)
   useEffect(() => {
     async function getMetric() {
       await getVideoMetric(token)
         .then((res) => {
           console.log(res);
-          setdata(res.data)
+          //setvideometric(res.videometric)
+          setvideometric(res.videometric)
         })
         .catch((err) => {
           console.log(err);
@@ -38,7 +41,7 @@ const AnalysisCardB = () => {
                     Views
                 </span>
               </div>
-              <div className="w-[90%] text-center text-lg sm:text-2xl">{data?.views|| '00'}</div>
+              <div className="w-[90%] text-center text-lg sm:text-2xl">{videometric?.views|| '00'}</div>
             </div>
             {/** */}
             <div className="w-full flex flex-col items-start justify-start  space-y-2 h-full p-4">
@@ -53,7 +56,7 @@ const AnalysisCardB = () => {
                   Average Views Duration
                 </span>
               </div>
-              <div className="w-[90%] text-center text-lg sm:text-2xl">{data?.avg_view_duration || '0:00'}</div>
+              <div className="w-[90%] text-center text-lg sm:text-2xl">{videometric?.avg_view_duration || '0:00'}</div>
             </div>
             {/** */}
             <div className="w-full flex flex-col items-start justify-start  space-y-2 h-full p-4">
@@ -68,7 +71,7 @@ const AnalysisCardB = () => {
                   Average Viewed 
                 </span>
               </div>
-              <div className="w-[90%] text-center text-lg sm:text-2xl">{data?.avg_viewed || '0'}</div>
+              <div className="w-[90%] text-center text-lg sm:text-2xl">{videometric?.avg_viewed || '0'}</div>
             </div>
             {/** */}
             <div className="w-full flex flex-col items-start justify-start  space-y-2 h-full p-4">
@@ -83,7 +86,7 @@ const AnalysisCardB = () => {
                   Summary
                 </span>
               </div>
-              <div className="w-[90%] text-center text-lg sm:text-2xl">{data?.summary || '0'}</div>
+              <div className="w-[90%] text-center text-lg sm:text-2xl">{videometric?.summary || '0'}</div>
             </div>
           </div>
         </div>

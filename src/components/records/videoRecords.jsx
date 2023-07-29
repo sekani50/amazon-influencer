@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { LoaderIcon } from 'lucide-react'
@@ -8,20 +8,19 @@ import { getVideos } from "../../Utils/api";
 import RecordWidgetB from "../recordwidget/recordWidgetb";
 import { notVerified, notVerifiedMessage } from "../../Redux/Actions/ActionCreators";
 import { toast } from "react-hot-toast";
+import { VideoContext } from "../../App";
 //import { useLocation } from "react-router-dom";
 const VideoRecords = ({ tab }) => {
   const { token} = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
- const [data, setdata] = useState([]);
-  const [totalItems, setTotalItems] = useState();
+ //const [data, setdata] = useState([]);
+ // const [totalItems, setTotalItems] = useState();
   const [loading, setloading] = useState(false);
   const dispatch = useDispatch()
+  const {setvideodata , videodata, totalvideo, settotalvideo} = useContext(VideoContext)
  
-
- 
-
   useEffect(() => {
-   
+    if(videodata.length > 0) return
     async function fetchVideo() {
       setloading(true);
       await getVideos(token, { page })
@@ -30,13 +29,14 @@ const VideoRecords = ({ tab }) => {
           setloading(false);
           const { items, totalItems } = res.data;
         //  dispatch(userVideos(items))
-          setdata(items);
+         // setdata(items);
+         setvideodata(items)
           const totalPage = Math.ceil(totalItems / 10);
           const pageNumbers = [...Array(totalPage).keys()].map(
             (page) => page + 1
           );
 
-          setTotalItems(pageNumbers);
+          settotalvideo(pageNumbers);
         })
         .catch((err) => {
           setloading(false);
@@ -77,7 +77,7 @@ const VideoRecords = ({ tab }) => {
             </div>
           </div>
         )}
-        {!loading && data?.length === 0 && (
+        {!loading && videodata?.length === 0 && (
           <div className="w-full h-[300px] flex justify-center items-center">
             <span className="w-[200px] h-[200px]">
               <img className="w-full h-full" src={empty} alt="" />
@@ -85,8 +85,8 @@ const VideoRecords = ({ tab }) => {
           </div>
         )}
         {!loading &&
-          data?.length > 0 &&
-          data?.map(
+          videodata?.length > 0 &&
+          videodata?.map(
             (
               {
                 title,
@@ -121,10 +121,10 @@ const VideoRecords = ({ tab }) => {
       </div>
      
     </div>
-     {totalItems && (
+     {totalvideo && (
       <div className="mt-8 w-full">
         <div className="flex justify-center space-x-1 items-center">
-          {totalItems?.map((pagenumber, idx) => {
+          {totalvideo?.map((pagenumber, idx) => {
             return (
               <button
                 onClick={() => {

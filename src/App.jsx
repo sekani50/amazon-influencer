@@ -20,9 +20,22 @@ import {
   UserManagement,
   Userdetails,
 } from "./Pages";
+import { createContext } from "react";
+import { useState } from "react";
+
+export const VideoContext = createContext()
+export const ProductContext = createContext()
+
 
 
 const App = () => {
+  const [videodata, setvideodata] = useState([])
+  const [productdata, setproductdata] = useState([])
+  const [productmetric, setproductmetric] = useState('')
+  const [videometric, setvideometric] = useState('')
+  const [totalproduct, settotalproduct] = useState('')
+  const [totalvideo, settotalvideo] = useState('')
+
   return (
     <div className="w-full h-full text-sm sm:text-[15px] font text-zinc-700">
       
@@ -53,6 +66,8 @@ const App = () => {
       <Router>
         <Scrolltotop />
         
+        <ProductContext.Provider value={{totalproduct, settotalproduct, setproductdata, setproductmetric, productdata, productmetric}}>
+        <VideoContext.Provider value={{totalvideo, settotalvideo, setvideodata, setvideometric, videodata, videometric}}>
         <Routes>
           {/*    AUTH PAGE */}
 
@@ -112,6 +127,8 @@ const App = () => {
 
           {/**Protected routes */}
         </Routes>
+        </VideoContext.Provider>
+        </ProductContext.Provider>
       </Router>
     </div>
   );

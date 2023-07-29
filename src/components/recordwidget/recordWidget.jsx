@@ -34,7 +34,7 @@ const RecordWidget = ({
           <div className="">{shipped || '0'}</div>
         <div>{price}</div>
        
-        <div>{`$${commission?.toLocaleString()}` || '0'}</div>
+        <div>{`${commission?.toLocaleString()}` || '0'}</div>
         <div>{`${sales?.toLocaleString()}` || '0'}</div>
         
       </div>

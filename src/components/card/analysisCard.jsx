@@ -1,18 +1,21 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { useEffect } from "react";
 import { MdShowChart, MdOutlineScale, MdShoppingBasket } from "react-icons/md";
 import { getMetrics } from "../../Utils/api";
 import { useSelector } from "react-redux";
+import { ProductContext } from "../../App";
 
 const AnalysisCard = () => {
   const {token} = useSelector((state) => state.user)
-  const [data, setdata] = useState()
+  //const [data, setdata] = useState('')
+  const {productmetric, setproductmetric} = useContext(ProductContext)
   useEffect(() => {
     async function getMetric() {
       await getMetrics(token)
         .then((res) => {
           console.log(res);
-          setdata(res.data)
+         // setproductmetric(res.productmetric)
+          setproductmetric(res.productmetric)
         })
         .catch((err) => {
           console.log(err);
@@ -38,7 +41,7 @@ const AnalysisCard = () => {
                   Items Shipped Revenue
                 </span>
               </div>
-              <div className="w-[90%] text-center text-lg sm:text-2xl">{data?.shipped_items_revenue|| '$0'}</div>
+              <div className="w-[90%] text-center text-lg sm:text-2xl">{productmetric?.shipped_items_revenue|| '$0'}</div>
             </div>
             {/** */}
             <div className="w-full flex flex-col items-start justify-start space-y-2  h-full p-4">
@@ -53,7 +56,7 @@ const AnalysisCard = () => {
                   Total Shipped
                 </span>
               </div>
-              <div className="w-[90%] text-center text-lg sm:text-2xl">{data?.shipped_items | '0'}</div>
+              <div className="w-[90%] text-center text-lg sm:text-2xl">{productmetric?.shipped_items | '0'}</div>
             </div>
             {/** */}
             <div className="w-full flex flex-col items-start justify-start space-y-2  h-full p-4">
@@ -68,7 +71,7 @@ const AnalysisCard = () => {
                   Total Ordered 
                 </span>
               </div>
-              <div className="w-[90%] text-center text-lg sm:text-2xl">{data?.ordered_items || '0'}</div>
+              <div className="w-[90%] text-center text-lg sm:text-2xl">{productmetric?.ordered_items || '0'}</div>
             </div>
             {/** */}
             <div className="w-full flex flex-col items-start justify-start space-y-2 h-full p-4">
@@ -83,7 +86,7 @@ const AnalysisCard = () => {
                   Summary
                 </span>
               </div>
-              <div className="w-[90%] text-center text-lg sm:text-2xl">{data?.summary || '$0'}</div>
+              <div className="w-[90%] text-center text-lg sm:text-2xl">{productmetric?.summary || '$0'}</div>
             </div>
           </div>
         </div>
