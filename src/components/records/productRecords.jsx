@@ -15,12 +15,13 @@ const ProductRecords = ({ tab }) => {
   const [page, setPage] = useState(1);
   //const [data, setdata] = useState([]);
   const dispatch = useDispatch()
+  const [initial, setinitial] = useState('')
  // const [totalItems, setTotalItems] = useState('');
   const [loading, setloading] = useState(false);
   const {setproductdata , productdata, totalproduct, settotalproduct} = useContext(ProductContext)
   
   useEffect(() => {
-    if(productdata.length > 0) return
+    if(productdata.length > 0 && initial === page) return
  
     async function fetchVideo() {
       setloading(true);
@@ -50,6 +51,7 @@ const ProductRecords = ({ tab }) => {
           }
           
         });
+        setinitial(page)
     }
 
     fetchVideo();

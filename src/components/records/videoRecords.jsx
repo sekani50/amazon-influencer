@@ -13,6 +13,7 @@ import { VideoContext } from "../../App";
 const VideoRecords = ({ tab }) => {
   const { token} = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
+  const [initial, setinitial] = useState('')
  //const [data, setdata] = useState([]);
  // const [totalItems, setTotalItems] = useState();
   const [loading, setloading] = useState(false);
@@ -20,7 +21,7 @@ const VideoRecords = ({ tab }) => {
   const {setvideodata , videodata, totalvideo, settotalvideo} = useContext(VideoContext)
  
   useEffect(() => {
-    if(videodata.length > 0) return
+    if(videodata.length > 0 && initial === page) return
     async function fetchVideo() {
       setloading(true);
       await getVideos(token, { page })
@@ -50,11 +51,14 @@ const VideoRecords = ({ tab }) => {
           }
         
         });
+        setinitial(page)
     }
 
     fetchVideo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
+
+ // console.log('initial',initial, 'page', page)
   return (
     <>
    <div className="dashboard-scroll-style w-full h-fit overflow-x-auto">
