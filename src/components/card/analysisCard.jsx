@@ -30,9 +30,9 @@ const AnalysisCard = () => {
       <div className=" w-full grid gap-3 md:gap-12 xl:gap-20 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 items-center h-[100px] p-3">
         <div className="w-full flex items-center justify-center sm:justify-start space-x-2 h-full px-4 py-2">
           <div className="flex items-center space-x-2 ">
-            <div className="w-fit h-fit rounded-lg p-2 sm:p-3 bg-[#51CBFF] bg-opacity-20 flex items-center justify-center">
+            <div className="w-fit h-fit rounded-lg p-3 bg-[#51CBFF] bg-opacity-20 flex items-center justify-center">
               <div className="rounded-md bg-[#51CBFF] p-1 ">
-                <MdShowChart className="text-[15px] sm:text-[28px] text-white" />
+                <MdShowChart className="text-[28px] text-white" />
               </div>
             </div>
           </div>
@@ -48,9 +48,9 @@ const AnalysisCard = () => {
         {/** */}
         <div className="w-full flex items-center justify-center sm:justify-start space-x-2  h-full p-4">
           <div className="flex items-center space-x-2 ">
-            <div className="w-fit h-fit rounded-lg p-2 sm:p-3 bg-[#23AF72] bg-opacity-20 flex items-center justify-center">
+            <div className="w-fit h-fit rounded-lg p-3 bg-[#23AF72] bg-opacity-20 flex items-center justify-center">
               <div className="rounded-md bg-none p-1 ">
-                <MdOutlineScale className="text-[15px] sm:text-[28px] text-[#23AF72]" />
+                <MdOutlineScale className="text-[28px] text-[#23AF72]" />
               </div>
             </div>
           </div>
@@ -66,9 +66,9 @@ const AnalysisCard = () => {
         {/** */}
         <div className="w-full flex items-center justify-center sm:justify-start space-x-2  h-full p-4">
           <div className="flex items-center space-x-2 ">
-            <div className="w-fit h-fit rounded-lg p-2 sm:p-3 bg-[#FD1F9B] bg-opacity-20 flex items-center justify-center">
+            <div className="w-fit h-fit rounded-lg p-3 bg-[#FD1F9B] bg-opacity-20 flex items-center justify-center">
               <div className="rounded-md bg-none ">
-                <MdShoppingBasket className="text-[18px] sm:text-[28px] text-[#FD1F9B]" />
+                <MdShoppingBasket className="text-[28px] text-[#FD1F9B]" />
               </div>
             </div>
           </div>
@@ -84,9 +84,9 @@ const AnalysisCard = () => {
         {/** */}
         <div className="w-full flex items-center justify-center sm:justify-start space-x-2 h-full p-4">
           <div className="flex items-center space-x-2 ">
-            <div className="w-fit h-fit rounded-lg p-2 sm:p-3 bg-[#FD1F9B] bg-opacity-20 flex items-center justify-center">
+            <div className="w-fit h-fit rounded-lg p-3 bg-[#FD1F9B] bg-opacity-20 flex items-center justify-center">
               <div className="rounded-md bg-none ">
-                <MdShoppingBasket className="text-[18px] sm:text-[28px] text-[#FD1F9B]" />
+                <MdShoppingBasket className="text-[28px] text-[#FD1F9B]" />
               </div>
             </div>
           </div>
