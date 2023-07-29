@@ -38,8 +38,8 @@ const RecordWidgetB = ({
             {name}
           </div>
         </Link>
-        <div className="col-span-2">{avgView}</div>
-        <div className="col-span-2">{avgViewtime}</div>
+        <div className="col-span-2">{avgView|| '0'}</div>
+        <div className="col-span-2">{avgViewtime || '0'}</div>
 
         <div>{status}</div>
         <div

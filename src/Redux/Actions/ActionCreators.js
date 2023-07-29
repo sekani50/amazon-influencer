@@ -58,6 +58,19 @@ const getUser = (token) => {
   });
 };
 
+const userVideos = (data) => {
+  return {
+    type: 'VIDEO',
+    payload:data
+  }
+}
+const userProducts = (data) => {
+  return {
+    type: 'PRODUCT',
+    payload:data
+  }
+}
+
 const LoginAction = (loginParams, navigate, setLoading) => {
   return async (dispatch) => {
     setLoading(true);
@@ -65,7 +78,7 @@ const LoginAction = (loginParams, navigate, setLoading) => {
       .post("/login", loginParams)
       .then(async (res) => {
         console.log(res.data);
-          navigate("/dashboard");
+        navigate("/dashboard");
         const { token } = res.data;
         dispatch(loginSuccess(token));
 
@@ -84,7 +97,7 @@ const LoginAction = (loginParams, navigate, setLoading) => {
             },
           })
           .then((res) => {
-             dispatch(getVerificationCredential(res.data))
+            dispatch(getVerificationCredential(res.data));
           })
           .catch((err) => {
             console.log(err);
@@ -98,13 +111,16 @@ const LoginAction = (loginParams, navigate, setLoading) => {
       .catch((error) => {
         setLoading(false);
         console.log(error);
-        if (error.message === 'Network Error') {
-          toast.error('Network Error')
+        if (
+          error.message === "Network Error" ||
+          error.message === "timeout exceeded"
+        ) {
+          toast.error("Network Error");
         }
-        const {message} = error.response.data.error
-        toast.error(message)
-        const {message:mm} = error.response.data.response
-        toast.error(mm)
+        const { message } = error.response.data.error;
+        toast.error(message);
+        const { message: mm } = error.response.data.response;
+        toast.error(mm);
       });
   };
 };
@@ -130,15 +146,18 @@ const registration = (registrationParams, navigate, setLoading) => {
       })
       .catch((error) => {
         setLoading(false);
-        if (error.message === 'Network Error') {
-          toast.error('Network Error')
+        if (
+          error.message === "Network Error" ||
+          error.message === "timeout exceeded"
+        ) {
+          toast.error("Network Error");
         }
-        console.log(error.response.data)
-        const {message} = error.response.data.error
-        toast.error(message)
+        console.log(error.response.data);
+        const { message } = error.response.data.error;
+        toast.error(message);
         //console.log(error.response.data.error.message);
-        const {message: mm} = error.response.data.response
-        toast.error(mm)
+        const { message: mm } = error.response.data.response;
+        toast.error(mm);
       });
   };
 };
@@ -147,6 +166,8 @@ export {
   LoginAction,
   registration,
   loginSuccess,
+  userVideos,
+  userProducts,
   logout,
   getVerificationData,
   notVerified,

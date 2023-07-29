@@ -12,13 +12,13 @@ const AmazonCaptcha = ({ setSuccess }) => {
   const { token, currentUser, verificationData } = useSelector(
     (state) => state.user
   );
- // const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState("");
   const [isError, setError] = useState(false);
   const [regenerating, setRegenerating] = useState(false);
-  
+
   const credential = {
     email: currentUser?.email,
     password: verificationData.password,
@@ -47,10 +47,13 @@ const AmazonCaptcha = ({ setSuccess }) => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        toast.error(err.message)
+        if (
+          err.message === "Network Error" ||
+          err.message === "timeout exceeded"
+        ) {
+          toast.error("Network Error");
+        }
 
-        // console.log(err.response.data?.response.messsage)
-        // toast.error(err?.response?.data?.response?.messsage)
         console.log(err?.response.data?.response?.message);
         if (err.response.data?.response?.captcha) {
           dispatch(
@@ -63,11 +66,10 @@ const AmazonCaptcha = ({ setSuccess }) => {
         } else {
           setError(true);
         }
-
-        const {message} = err.response.data.response
-        toast.error(message)
-
-       
+        const { message: mm } = err.response.data.error;
+        toast.error(mm);
+        const { message } = err.response.data.response;
+        toast.error(message);
       });
   };
 
@@ -88,11 +90,18 @@ const AmazonCaptcha = ({ setSuccess }) => {
       .catch((err) => {
         console.log(err);
         setRegenerating(false);
-        toast.error(err.message)
-        const {message} = err.response.data.response
-        toast.error(message)
+        if (
+          err.message === "Network Error" ||
+          err.message === "timeout exceeded"
+        ) {
+          toast.error("Network Error");
+        }
+        const { message: mm } = err.response.data.error;
+        toast.error(mm);
+
+        const { message } = err.response.data.response;
+        toast.error(message);
         //toast.error(err.response.data.error)
-       
       });
   }
   return (
@@ -169,7 +178,6 @@ const AmazonCaptcha = ({ setSuccess }) => {
           </div>
         </div>
       )}
-
     </>
   );
 };

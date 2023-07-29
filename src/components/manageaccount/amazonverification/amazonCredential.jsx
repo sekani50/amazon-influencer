@@ -15,7 +15,7 @@ const AmazonCredential = ({ setSuccess }) => {
   const [email, setEmail] = useState(credential?.key);
   const [password, setPassword] = useState(credential?.value);
   const [loading, setLoading] = useState(false);
- 
+
   useEffect(() => {
     async function fetchStatus() {
       await getCredentials(token)
@@ -25,7 +25,6 @@ const AmazonCredential = ({ setSuccess }) => {
         })
         .catch((err) => {
           console.log(err);
-
         });
     }
 
@@ -63,10 +62,16 @@ const AmazonCredential = ({ setSuccess }) => {
       .catch((err) => {
         setLoading(false);
         console.log(err);
-        toast.error(err.message)
-        const {message} = err.response.data.response
-        toast.error(message)
-        
+        if (
+          err.message === "Network Error" ||
+          err.message === "timeout exceeded"
+        ) {
+          toast.error("Network Error");
+        }
+        const { message } = err.response.data.error;
+        toast.error(message);
+        const { message: mm } = err.response.data.response;
+        toast.error(mm);
       });
   };
   return (

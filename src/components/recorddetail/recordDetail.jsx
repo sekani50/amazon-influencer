@@ -128,7 +128,7 @@ const RecordDetail = () => {
                     name={productName}
                     ordered={total_ordered}
                     price={price}
-                    revenue={revenue}
+                    revenue={revenue || '0'}
                     income={totalIncome}
                     shipped={totalShipped}
                    

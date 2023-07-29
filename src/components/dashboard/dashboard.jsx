@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [tab, setTab] = useState('Videos')
   return (
     <Container>
-      <div className="w-full px-2  sm:px-6 space-y-4 sm:space-y-6 py-4 h-fit">
+      <div className="w-full px-2  sm:px-6 py-4 h-fit">
        {tab === 'Products' && <AnalysisCard />}
        {tab === 'Videos' && <AnalysisCardB />}
         <div className="border-b-2 px-2 border-gray-300 w-full flex items-center ">
