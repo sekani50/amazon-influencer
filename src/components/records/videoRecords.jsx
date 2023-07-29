@@ -8,15 +8,20 @@ import { getVideos } from "../../Utils/api";
 import RecordWidgetB from "../recordwidget/recordWidgetb";
 import { notVerified, notVerifiedMessage } from "../../Redux/Actions/ActionCreators";
 import { toast } from "react-hot-toast";
+//import { useLocation } from "react-router-dom";
 const VideoRecords = ({ tab }) => {
-  const { token } = useSelector((state) => state.user);
+  const { token} = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
-  const [data, setdata] = useState([]);
+ const [data, setdata] = useState([]);
   const [totalItems, setTotalItems] = useState();
   const [loading, setloading] = useState(false);
   const dispatch = useDispatch()
+ 
+
+ 
 
   useEffect(() => {
+   
     async function fetchVideo() {
       setloading(true);
       await getVideos(token, { page })
@@ -24,6 +29,7 @@ const VideoRecords = ({ tab }) => {
           console.log(res.data);
           setloading(false);
           const { items, totalItems } = res.data;
+        //  dispatch(userVideos(items))
           setdata(items);
           const totalPage = Math.ceil(totalItems / 10);
           const pageNumbers = [...Array(totalPage).keys()].map(

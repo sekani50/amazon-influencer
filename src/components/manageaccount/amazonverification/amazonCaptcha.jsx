@@ -65,9 +65,12 @@ const AmazonCaptcha = ({ setSuccess }) => {
           toast.error("Try captcha again");
         } else {
           setError(true);
+          
+          //const { message: mm } = err.response.data.error;
+          toast.error(err.response.statusText)
+          //toast.error();
         }
-        const { message: mm } = err.response.data.error;
-        toast.error(mm);
+        
         const { message } = err.response.data.response;
         toast.error(message);
       });
@@ -84,7 +87,9 @@ const AmazonCaptcha = ({ setSuccess }) => {
             captcha,
             password: verificationData?.password,
           })
+          
         );
+        setError(false)
         setRegenerating(false);
       })
       .catch((err) => {
@@ -96,11 +101,12 @@ const AmazonCaptcha = ({ setSuccess }) => {
         ) {
           toast.error("Network Error");
         }
-        const { message: mm } = err.response.data.error;
-        toast.error(mm);
-
+       
+        toast.error(err.response.statusText)
         const { message } = err.response.data.response;
         toast.error(message);
+      const { message: mm } = err.response.data.error;
+       toast.error(mm);
         //toast.error(err.response.data.error)
       });
   }
@@ -129,6 +135,7 @@ const AmazonCaptcha = ({ setSuccess }) => {
               </button>
             </div>
           )}
+         {!isError && <div className="w-full space-y-4">
           <div className="form-group space-y-4 w-full">
             <label className="block font-semibold " htmlFor="text">
               Enter the text you can see in the image above
@@ -155,6 +162,8 @@ const AmazonCaptcha = ({ setSuccess }) => {
               "Continue"
             )}
           </button>
+          </div>}
+         
         </div>
       </div>
       {isMailMessage && (
@@ -165,7 +174,7 @@ const AmazonCaptcha = ({ setSuccess }) => {
           className="w-full h-full fixed bg-black bg-opacity-20 inset-0"
         >
           <div className="w-[95%] space-y-5 rounded-lg flex flex-col items-center justify-center bg-white py-6 px-4 sm:w-[350px] inset-0 m-auto absolute h-fit">
-            <div className="text-green-500 font-medium">{isMailMessage}</div>
+            <div className="text-red-500 font-medium">{isMailMessage}</div>
 
             <div
               onClick={() => {

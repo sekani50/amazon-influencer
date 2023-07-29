@@ -6,26 +6,21 @@ import { getProducts } from "../../Utils/api";
 import { useDispatch, useSelector } from "react-redux";
 import { LoaderIcon } from 'lucide-react'
 import { toast } from "react-hot-toast";
-import { useLocation } from "react-router-dom";
-import { notVerified, notVerifiedMessage, userProducts } from "../../Redux/Actions/ActionCreators";
+//import { useLocation } from "react-router-dom";
+import { notVerified, notVerifiedMessage } from "../../Redux/Actions/ActionCreators";
 import empty from "../../assets/png/emptyorder.png";
 const ProductRecords = ({ tab }) => {
-  const { token,  userproducts } = useSelector((state) => state.user);
+  const { token } = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
   const [data, setdata] = useState([]);
   const dispatch = useDispatch()
   const [totalItems, setTotalItems] = useState();
   const [loading, setloading] = useState(false);
-  const {pathname} = useLocation()
+  
+
 
   useEffect(() => {
-    if (pathname !== "/dashboard") {
-      dispatch(userProducts(null))
-    }
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
-  useEffect(() => {
-      if(userproducts) return
+      
     async function fetchVideo() {
       setloading(true);
       await getProducts(token, { page })
@@ -33,7 +28,8 @@ const ProductRecords = ({ tab }) => {
           console.log(res.data);
           setloading(false);
           const { items, totalItems } = res.data;
-          setdata(items);
+          //dispatch(userProducts(items))
+         setdata(items);
           const totalPage = Math.ceil(totalItems / 10);
           const pageNumbers = [...Array(totalPage).keys()].map(
             (page) => page + 1

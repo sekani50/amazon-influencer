@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Container from "../container/container";
 import Profile from "../manageaccount/profile";
 import Account from "../manageaccount/account";
+import { useLocation } from "react-router-dom";
 import AmazonVerification from "../manageaccount/amazonVerification";
 const Settings = () => {
-  const [active, setactive] = useState(2);
+  const {state} = useLocation()
+  const [active, setactive] = useState(state?.active || 1);
   // const [tab, setTab] = useState("Profile");
 
 

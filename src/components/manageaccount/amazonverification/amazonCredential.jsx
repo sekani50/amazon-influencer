@@ -68,10 +68,18 @@ const AmazonCredential = ({ setSuccess }) => {
         ) {
           toast.error("Network Error");
         }
-        const { message } = err.response.data.error;
+        else {
+         // const { message:mm } = err.response.data.error;
+        // toast.error(mm);
+          toast.error(err.response.statusText)
+        }
+       // console.log(err.response.data.response.message)
+      
+       
+        const { message } = err.response.data.response;
         toast.error(message);
-        const { message: mm } = err.response.data.response;
-        toast.error(mm);
+        const { message:mm } = err.response.data.error;
+         toast.error(mm);
       });
   };
   return (

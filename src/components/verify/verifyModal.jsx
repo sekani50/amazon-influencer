@@ -23,7 +23,11 @@ const VerifyModal = () => {
         <div className="text-red-500 font-medium text-center ">{message}</div>
         <button
           onClick={() => {
-            navigate("/setting");
+            navigate("/setting", {
+              state: {
+                active: 2
+              }
+            });
             dispatch(notVerified(false))
           }}
           className="h-[45px] w-fit px-6 font-medium bg-[#005ABC] rounded-lg text-white"

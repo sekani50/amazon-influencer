@@ -25,7 +25,7 @@ const VideoAnalysis = ({ url }) => {
   return (
     <div className="w-[98%] mx-auto sm:w-[95%] h-full mb-[12rem] md:mb-[12rem] xl:mb-[2rem]">
       <div className=" w-full grid gap-3 grid-cols-4 items-center h-[100px] p-3 ">
-        <div className="w-full flex flex-col items-center justify-center space-y-2  h-full px-4 py-2">
+        <div className="w-full flex flex-col items-start justify-start space-y-2  h-full px-4 py-2">
           <div className="flex items-center space-x-2 ">
             <div className="w-fit h-fit rounded-full sm:p-3 p-2 bg-[#51CBFF] bg-opacity-20 flex items-center justify-center">
               <div className="rounded-md bg-[#51CBFF] p-1 ">
@@ -37,12 +37,12 @@ const VideoAnalysis = ({ url }) => {
               Total Commision Income
             </span>
           </div>
-          <div className="text-lg sm:text-2xl">
+          <div className="w-[90%] text-center text-lg sm:text-2xl">
             {data?.total_commission_income || "$0"}
           </div>
         </div>
         {/** */}
-        <div className="w-full flex flex-col items-center justify-center space-y-2  h-full p-4">
+        <div className="w-full flex flex-col items-start justify-start space-y-2  h-full p-4">
           <div className="flex items-center space-x-2 ">
             <div className="w-fit h-fit rounded-full sm:p-3 p-2 bg-[#23AF72] bg-opacity-20 flex items-center justify-center">
               <div className="rounded-md bg-none p-1 ">
@@ -54,10 +54,10 @@ const VideoAnalysis = ({ url }) => {
               Total Shipped
             </span>
           </div>
-          <div className="text-lg sm:text-2xl">{data?.total_shipped | "0"}</div>
+          <div className="w-[90%] text-center text-lg sm:text-2xl">{data?.total_shipped | "0"}</div>
         </div>
         {/** */}
-        <div className="w-full flex flex-col items-center justify-center space-y-2  h-full p-4">
+        <div className="w-full flex flex-col items-start justify-start space-y-2  h-full p-4">
           <div className="flex items-center space-x-2 ">
             <div className="w-fit h-fit rounded-full sm:p-3 p-2 bg-[#FD1F9B] bg-opacity-20 flex items-center justify-center">
               <div className="rounded-md bg-none ">
@@ -72,7 +72,7 @@ const VideoAnalysis = ({ url }) => {
           <div className="text-lg sm:text-2xl">{data?.total_orders || "0"}</div>
         </div>
         {/** */}
-        <div className="w-full flex flex-col items-center  justify-center space-y-2 h-full p-4">
+        <div className="w-full flex flex-col items-start justify-start space-y-2 h-full p-4">
           <div className="flex items-center space-x-2 ">
             <div className="w-fit h-fit rounded-full sm:p-3 p-2 bg-[#FD1F9B] bg-opacity-20 flex items-center justify-center">
               <div className="rounded-md bg-none ">
@@ -84,7 +84,7 @@ const VideoAnalysis = ({ url }) => {
               Total Products
             </span>
           </div>
-          <div className="text-lg sm:text-2xl">
+          <div className="w-[90%] text-center text-lg sm:text-2xl">
             {data?.total_products || "$0"}
           </div>
         </div>

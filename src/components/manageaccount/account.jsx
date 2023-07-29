@@ -5,9 +5,9 @@ import { LoaderIcon } from "lucide-react";
 import { changePassword } from "../../Utils/api";
 import { useSelector } from "react-redux";
 const Account = () => {
-    const [curpassword, setcurPassword] = useState()
-    const [newpassword, setnewpassword] = useState()
-    const [confirmPassword, setconfirmPassword] = useState()
+    const [curpassword, setcurPassword] = useState('')
+    const [newpassword, setnewpassword] = useState('')
+    const [confirmPassword, setconfirmPassword] = useState('')
     const [loading, setloading] = useState(false)
     const {token} = useSelector((state) => state.user)
 
