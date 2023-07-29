@@ -24,7 +24,7 @@ const VideoAnalysis = ({ url }) => {
   }, []);
   return (
     <div className="w-[98%] mx-auto sm:w-[95%] h-full mb-[12rem] md:mb-[12rem] xl:mb-[2rem]">
-      <div className=" w-full grid gap-3 md:gap-6 xl:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 items-center h-[100px] p-3 ">
+      <div className=" w-full grid gap-3 md:gap-12 xl:gap-20 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 items-center h-[100px] p-3 ">
         <div className="w-full flex  items-center justify-center sm:justify-start space-x-2  h-full px-4 py-2">
           <div className="flex items-center space-x-2 ">
             <div className="w-fit h-fit rounded-lg sm:p-3 p-2 bg-[#51CBFF] bg-opacity-20 flex items-center justify-center">
@@ -37,7 +37,7 @@ const VideoAnalysis = ({ url }) => {
             <span className="text-gray-500 whitespace-nowrap">
               Total Commision Income
             </span>
-            <div className="w-[90%] text-center text-lg sm:text-2xl">
+            <div className=" text-lg sm:text-2xl">
               {data?.total_commission_income || "$0"}
             </div>
           </div>
@@ -55,7 +55,7 @@ const VideoAnalysis = ({ url }) => {
             <span className="text-gray-500 whitespace-nowrap">
               Total Shipped
             </span>
-            <div className="w-[90%] text-center text-lg sm:text-2xl">
+            <div className=" text-lg sm:text-2xl">
               {data?.total_shipped | "0"}
             </div>
           </div>
@@ -92,7 +92,7 @@ const VideoAnalysis = ({ url }) => {
             <span className="text-gray-500 whitespace-nowrap">
               Total Products
             </span>
-            <div className="w-[90%] text-center text-lg sm:text-2xl">
+            <div className=" text-lg sm:text-2xl">
               {data?.total_products || "$0"}
             </div>
           </div>
