@@ -108,7 +108,7 @@ const RecordDetail = () => {
           data?.products?.map(
             (
               {
-                productName,
+                name,
                 revenue,
                 totalIncome,
                 totalShipped,
@@ -125,7 +125,7 @@ const RecordDetail = () => {
                 key={idx}>
                   <RecordWidgetC
                     image={data?.image}
-                    name={productName}
+                    name={name}
                     ordered={total_ordered}
                     price={price}
                     revenue={revenue || '0'}
