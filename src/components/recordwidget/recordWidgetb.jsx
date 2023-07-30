@@ -1,5 +1,5 @@
 import React from "react";
-import profile from "../../assets/png/customerpic.png";
+import profile from "../../assets/png/products.jpg";
 import { Link } from "react-router-dom";
 import copy from "copy-to-clipboard";
 import { BsCheck2All } from "react-icons/bs";

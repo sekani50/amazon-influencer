@@ -1,5 +1,5 @@
 import React from "react";
-import profile from "../../assets/png/customerpic.png";
+import profile from "../../assets/png/products.jpg";
 import { useNavigate } from "react-router-dom";
 const RecordWidgetC = ({
   image,

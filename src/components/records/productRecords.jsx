@@ -60,7 +60,7 @@ const ProductRecords = ({ tab }) => {
 
   return (
     <>
-    <div className="dashboard-scroll-style w-full h-fit overflow-x-auto">
+    <div className="dashboard-scroll-style w-full h-fit pb-3 overflow-x-auto">
       <div className="w-full min-w-[1000px] space-y-3">
         <div className="w-full items-center bg-white px-3 py-3 sm:py-5 grid grid-cols-9 gap-2 text-gray-500">
           <div className="flex space-x-2 items-center col-span-3">
@@ -92,6 +92,7 @@ const ProductRecords = ({ tab }) => {
           productdata?.map(
             (
               {
+                image,
                 name,
                 price,
                 revenue,
@@ -104,7 +105,7 @@ const ProductRecords = ({ tab }) => {
               return (
                 <div key={idx}>
                   <RecordWidget
-                    image={""}
+                    image={image || ""}
                     name={name}
                     shipped={items_shipped}
                     ordered={total_ordered}

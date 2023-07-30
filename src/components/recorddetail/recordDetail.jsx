@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Container from "../container/container";
-import profile from "../../assets/png/customerpic.png";
+import profile from "../../assets/png/products.jpg";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlinePlayCircle } from "react-icons/ai";
@@ -49,7 +49,7 @@ const RecordDetail = () => {
   },[])
   return (
     <Container>
-      <div className="w-full px-2  sm:px-6 space-y-4 sm:space-y-7 py-3 sm:py-4 h-fit">
+      <div className="w-full px-2  sm:px-6 space-y-4 sm:space-y-7 pt-3 pb-6 sm:pt-4 sm:pb-8 h-fit">
         <div
         onClick={() => {
           navigate(-1)

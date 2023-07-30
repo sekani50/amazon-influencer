@@ -1,5 +1,5 @@
 import React from "react";
-import profile from "../../assets/png/customerpic.png";
+import profile from "../../assets/png/products.jpg";
 
 const RecordWidget = ({
   image,
@@ -32,7 +32,7 @@ const RecordWidget = ({
         </div>
         <div className="">{ordered || '0'}</div>
           <div className="">{shipped || '0'}</div>
-        <div>{price}</div>
+        <div>{price || '$0'}</div>
        
         <div>{`${commission?.toLocaleString()}` || '0'}</div>
         <div>{`${sales?.toLocaleString()}` || '0'}</div>
