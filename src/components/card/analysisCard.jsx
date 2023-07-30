@@ -15,7 +15,7 @@ const AnalysisCard = () => {
         .then((res) => {
           console.log(res);
           // setproductmetric(res.productmetric)
-          setproductmetric(res.productmetric);
+          setproductmetric(res.data);
         })
         .catch((err) => {
           console.log(err);

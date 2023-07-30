@@ -15,7 +15,7 @@ const AnalysisCardB = () => {
         .then((res) => {
           console.log(res);
           //setvideometric(res.videometric)
-          setvideometric(res.videometric)
+          setvideometric(res.data)
         })
         .catch((err) => {
           console.log(err);
