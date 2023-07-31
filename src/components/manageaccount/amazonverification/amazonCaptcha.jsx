@@ -65,14 +65,22 @@ const AmazonCaptcha = ({ setSuccess }) => {
           toast.error("Try captcha again");
         } else {
           setError(true);
-          
-          //const { message: mm } = err.response.data.error;
-          toast.error(err.response.statusText)
-          //toast.error();
+
+          toast.error(err.response.statusText);
         }
-        
+        if ("Invalid credentials, Try again...") {
+          toast.error("Invalid credentials, Try again...");
+          setSuccess(false);
+        }
+
         const { message } = err.response.data.response;
-        toast.error(message);
+        if (message) {
+          toast.error(message);
+        }
+        const { message: mm } = err.response.data.error;
+        if (mm) {
+          toast.error(mm);
+        }
       });
   };
 
@@ -87,9 +95,8 @@ const AmazonCaptcha = ({ setSuccess }) => {
             captcha,
             password: verificationData?.password,
           })
-          
         );
-        setError(false)
+        setError(false);
         setRegenerating(false);
       })
       .catch((err) => {
@@ -101,12 +108,15 @@ const AmazonCaptcha = ({ setSuccess }) => {
         ) {
           toast.error("Network Error");
         }
-       
-        toast.error(err.response.statusText)
+
         const { message } = err.response.data.response;
-        toast.error(message);
-      const { message: mm } = err.response.data.error;
-       toast.error(mm);
+        if (message) {
+          toast.error(message);
+        }
+        const { message: mm } = err.response.data.error;
+        if (mm) {
+          toast.error(mm);
+        }
         //toast.error(err.response.data.error)
       });
   }
@@ -135,35 +145,36 @@ const AmazonCaptcha = ({ setSuccess }) => {
               </button>
             </div>
           )}
-         {!isError && <div className="w-full space-y-4">
-          <div className="form-group space-y-4 w-full">
-            <label className="block font-semibold " htmlFor="text">
-              Enter the text you can see in the image above
-            </label>
-            <input
-              className="block form__input border border-gray-200 focus:border-gray-500 hover:border-gray-500 rounded-md focus:outline-none w-full h-11 px-4"
-              type="text"
-              placeholder=""
-              name="text"
-              value={answer}
-              onChange={(e) => {
-                setAnswer(e.target.value);
-              }}
-            />
-          </div>
+          {!isError && (
+            <div className="w-full space-y-4">
+              <div className="form-group space-y-4 w-full">
+                <label className="block font-semibold " htmlFor="text">
+                  Enter the text you can see in the image above
+                </label>
+                <input
+                  className="block form__input border border-gray-200 focus:border-gray-500 hover:border-gray-500 rounded-md focus:outline-none w-full h-11 px-4"
+                  type="text"
+                  placeholder=""
+                  name="text"
+                  value={answer}
+                  onChange={(e) => {
+                    setAnswer(e.target.value);
+                  }}
+                />
+              </div>
 
-          <button
-            onClick={handleSubmit}
-            className="w-full h-[45px] bg-[#005ABC] font-semibold rounded-lg text-white flex justify-center items-center space-x-2"
-          >
-            {loading ? (
-              <LoaderIcon className="text-base animate-spin" />
-            ) : (
-              "Continue"
-            )}
-          </button>
-          </div>}
-         
+              <button
+                onClick={handleSubmit}
+                className="w-full h-[45px] bg-[#005ABC] font-semibold rounded-lg text-white flex justify-center items-center space-x-2"
+              >
+                {loading ? (
+                  <LoaderIcon className="text-base animate-spin" />
+                ) : (
+                  "Continue"
+                )}
+              </button>
+            </div>
+          )}
         </div>
       </div>
       {isMailMessage && (

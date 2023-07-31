@@ -67,19 +67,17 @@ const AmazonCredential = ({ setSuccess }) => {
           err.message === "timeout exceeded"
         ) {
           toast.error("Network Error");
+        } else {
+          toast.error(err.response.statusText);
         }
-        else {
-         // const { message:mm } = err.response.data.error;
-        // toast.error(mm);
-          toast.error(err.response.statusText)
-        }
-       // console.log(err.response.data.response.message)
-      
-       
         const { message } = err.response.data.response;
-        toast.error(message);
-        const { message:mm } = err.response.data.error;
-         toast.error(mm);
+        if (message) {
+          toast.error(message);
+        }
+        const { message: mm } = err.response.data.error;
+        if (mm) {
+          toast.error(mm);
+        }
       });
   };
   return (

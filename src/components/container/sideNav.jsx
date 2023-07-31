@@ -6,6 +6,7 @@ import { BsCalendar2Minus } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getVerificationCredential } from "../../Redux/Actions/ActionCreators";
 const SideNav = ({ isNav, setisNav }) => {
   const {currentUser} = useSelector((state) => state.user)
   const { pathname } = useLocation();
@@ -14,6 +15,7 @@ const SideNav = ({ isNav, setisNav }) => {
 
   function handleLogout() {
     dispatch({ type: "LOGOUT" });
+    dispatch(getVerificationCredential(null))
     navigate("/");
   }
 
