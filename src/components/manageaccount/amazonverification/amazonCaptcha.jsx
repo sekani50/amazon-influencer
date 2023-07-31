@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //import { useNavigate } from "react-router-dom";
 import { LoaderIcon } from "lucide-react";
 import { toast } from "react-hot-toast";
@@ -7,18 +7,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { credentials } from "../../../Utils/api";
 import { getVerificationData } from "../../../Redux/Actions/ActionCreators";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 const AmazonCaptcha = ({ setSuccess }) => {
   const [isMailMessage, setMailMessage] = useState();
   const { token, currentUser, verificationData } = useSelector(
     (state) => state.user
   );
+  const [countdown, setcountdown] = useState(20);
   // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState("");
   const [isError, setError] = useState(false);
   const [regenerating, setRegenerating] = useState(false);
-
+  const navigate = useNavigate();
   const credential = {
     email: currentUser?.email,
     password: verificationData.password,
@@ -120,6 +122,20 @@ const AmazonCaptcha = ({ setSuccess }) => {
         //toast.error(err.response.data.error)
       });
   }
+
+  useEffect(() => {
+    if (isMailMessage) {
+      let timerInterval = setInterval(function () {
+        setcountdown(countdown - 1);
+
+        if (countdown <= 0) {
+          clearInterval(timerInterval);
+          navigate("/");
+        }
+      }, 1000);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMailMessage]);
   return (
     <>
       <div className={`w-full h-fit let swipeIn `}>
@@ -185,7 +201,7 @@ const AmazonCaptcha = ({ setSuccess }) => {
           className="w-full h-full fixed bg-black bg-opacity-20 inset-0"
         >
           <div className="w-[95%] space-y-5 rounded-lg flex flex-col items-center justify-center bg-white py-6 px-4 sm:w-[350px] inset-0 m-auto absolute h-fit">
-            <div className="text-red-500 font-medium">{isMailMessage}</div>
+            <div className="text-red-500 font-medium">{`Check your email and accept login if available else disregard... within ${countdown} seconds`}</div>
 
             <div
               onClick={() => {
