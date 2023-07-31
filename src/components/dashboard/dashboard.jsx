@@ -66,42 +66,44 @@ const Dashboard = () => {
       <>
         {credential && credential.status === false && (
           <div className="w-full h-[60px] text-red-600 flex justify-between items-center px-10 py-4 bg-red-100 border-y border-red-500">
-            <span>Verification Required. Go to Settings</span>
-
-            <button
-              onClick={() => {
-                navigate("/setting", {
-                  state: {
-                    active: 2,
-                  },
-                });
-              }}
-              className="p-2 rounded-md border border-red-600 "
-            >
-              Settings
-            </button>
+            <span>
+              Look like your associate account is paused or unsuccessful.
+              <span
+                onClick={() => {
+                  navigate("/setting", {
+                    state: {
+                      active: 2,
+                    },
+                  });
+                }}
+                className="font-semibold underline cursor-pointer mx-1"
+              >
+                Re activate
+              </span>
+              to continue
+            </span>
           </div>
         )}
         {credential === false && (
           <div className="w-full h-[60px] text-red-600 flex justify-between items-center px-10 py-4 bg-red-100 border-y border-red-500">
             <span>
               {" "}
-              Verification required. Go to settings to link your amazon
-              associate account to unlock the features of the application
-              features
+              Go to{" "}
+              <span
+                onClick={() => {
+                  navigate("/setting", {
+                    state: {
+                      active: 2,
+                    },
+                  });
+                }}
+                className="cursor-pointer mx-1 underline font-semibold"
+              >
+                settings page
+              </span>{" "}
+              to link your amazon associate account to unlock the
+              the application features
             </span>
-            <button
-              onClick={() => {
-                navigate("/setting", {
-                  state: {
-                    active: 2,
-                  },
-                });
-              }}
-              className="p-2 rounded-md border border-red-600 "
-            >
-              Settings
-            </button>
           </div>
         )}
         <div className="w-full px-2  sm:px-6 py-4 h-fit">
