@@ -24,7 +24,15 @@ const Dashboard = () => {
         .then((res) => {
           // console.log(res)
           dispatch(getVerificationCredential(res.data));
-          if (res.data === false || res.data.status === false) {
+          if (res.data === false) {
+            dispatch(
+              notVerifiedMessage(
+                "Verification required. Go to settings to link your amazon associate account to unlock the features of the application features"
+              )
+            );
+            dispatch(notVerified(true));
+            toast.error("Verification required. Go to Settings");
+          } else if (res.data.status === false) {
             dispatch(
               notVerifiedMessage("Verification required. Go to Settings")
             );
@@ -40,7 +48,7 @@ const Dashboard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-/**
+  /**
    useEffect(() => {
     if ((credential && credential === false) || (credential && !credential.status)) {
       dispatch(notVerifiedMessage("Verification required. Go to Settings"));
