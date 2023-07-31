@@ -7,8 +7,7 @@ const initailState = {
   isnotVerified: false,
   message: "",
   credential: null,
-  uservideos: null,
-  userproducts: null,
+
 };
 const User = (state = initailState, action) => {
   switch (action.type) {
@@ -45,16 +44,7 @@ const User = (state = initailState, action) => {
         ...state,
         credential: action.payload,
       };
-    case "VIDEO":
-      return {
-        ...state,
-        uservideos: action.payload,
-      };
-    case "PRODUCT":
-      return {
-        ...state,
-        userproducts: action.payload,
-      };
+  
     case type.LOGOUT:
       return {
         ...state,
@@ -63,6 +53,7 @@ const User = (state = initailState, action) => {
         verificationData: null,
         isnotVerified: false,
         message: "",
+        credential: null,
       };
 
     default:
