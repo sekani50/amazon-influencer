@@ -6,6 +6,7 @@ import VideoRecords from "../records/videoRecords";
 import AnalysisCardB from "../card/analysisCardb";
 import { getCredentials } from "../../Utils/api";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   getVerificationCredential,
   notVerified,
@@ -17,6 +18,7 @@ const Dashboard = () => {
   const [tab, setTab] = useState("Videos");
   const { token, credential } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function showCredential() {
@@ -54,50 +56,92 @@ const Dashboard = () => {
       dispatch(notVerifiedMessage("Verification required. Go to Settings"));
       dispatch(notVerified(true));
       toast.error("Verification required. Go to Settings");
-    }
+    } 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [credential]);
  */
 
   return (
     <Container>
-      <div className="w-full px-2  sm:px-6 py-4 h-fit">
-        {tab === "Products" && <AnalysisCard />}
-        {tab === "Videos" && <AnalysisCardB />}
-        <div className="border-b-2 px-2 border-gray-300 w-full flex items-center ">
-          <div className="flex items-center space-x-8">
-            <span
-              onClick={() => {
-                setactive(0);
-                setTab("Videos");
-              }}
-              className={`py-2 cursor-pointer ${
-                active === 0
-                  ? "border-b-[4px] border-[#005ABC] font-bold"
-                  : "font-semibold text-gray-500"
-              }`}
-            >
-              Videos
-            </span>
-            <span
-              onClick={() => {
-                setactive(1);
-                setTab("Products");
-              }}
-              className={`py-2 cursor-pointer ${
-                active === 1
-                  ? "border-b-[4px] border-[#005ABC] font-bold"
-                  : "font-semibold text-gray-500"
-              }`}
-            >
-              Products
-            </span>
-          </div>
-        </div>
+      <>
+        {credential && credential.status === false && (
+          <div className="w-full h-[60px] text-red-600 flex justify-between items-center px-10 py-4 bg-red-100 border-y border-red-500">
+            <span>Verification Required. Go to Settings</span>
 
-        {active === 0 && <VideoRecords tab={tab} />}
-        {active === 1 && <ProductRecords tab={tab} />}
-      </div>
+            <button
+              onClick={() => {
+                navigate("/setting", {
+                  state: {
+                    active: 2,
+                  },
+                });
+              }}
+              className="p-2 rounded-md border border-red-600 "
+            >
+              Settings
+            </button>
+          </div>
+        )}
+        {credential === false && (
+          <div className="w-full h-[60px] text-red-600 flex justify-between items-center px-10 py-4 bg-red-100 border-y border-red-500">
+            <span>
+              {" "}
+              Verification required. Go to settings to link your amazon
+              associate account to unlock the features of the application
+              features
+            </span>
+            <button
+              onClick={() => {
+                navigate("/setting", {
+                  state: {
+                    active: 2,
+                  },
+                });
+              }}
+              className="p-2 rounded-md border border-red-600 "
+            >
+              Settings
+            </button>
+          </div>
+        )}
+        <div className="w-full px-2  sm:px-6 py-4 h-fit">
+          {tab === "Products" && <AnalysisCard />}
+          {tab === "Videos" && <AnalysisCardB />}
+          <div className="border-b-2 px-2 border-gray-300 w-full flex items-center ">
+            <div className="flex items-center space-x-8">
+              <span
+                onClick={() => {
+                  setactive(0);
+                  setTab("Videos");
+                }}
+                className={`py-2 cursor-pointer ${
+                  active === 0
+                    ? "border-b-[4px] border-[#005ABC] font-bold"
+                    : "font-semibold text-gray-500"
+                }`}
+              >
+                Videos
+              </span>
+              <span
+                onClick={() => {
+                  setactive(1);
+                  setTab("Products");
+                }}
+                className={`py-2 cursor-pointer ${
+                  active === 1
+                    ? "border-b-[4px] border-[#005ABC] font-bold"
+                    : "font-semibold text-gray-500"
+                }`}
+              >
+                Products
+              </span>
+            </div>
+          </div>
+
+          {active === 0 && <VideoRecords tab={tab} />}
+          {active === 1 && <ProductRecords tab={tab} />}
+        </div>
+      </>
     </Container>
   );
 };
