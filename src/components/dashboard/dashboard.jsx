@@ -40,14 +40,17 @@ const Dashboard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (!credential || !credential.status) {
+/**
+   useEffect(() => {
+    if ((credential && credential === false) || (credential && !credential.status)) {
       dispatch(notVerifiedMessage("Verification required. Go to Settings"));
       dispatch(notVerified(true));
       toast.error("Verification required. Go to Settings");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [credential]);
+ */
+
   return (
     <Container>
       <div className="w-full px-2  sm:px-6 py-4 h-fit">
