@@ -201,7 +201,7 @@ const AmazonCaptcha = ({ setSuccess }) => {
           className="w-full h-full fixed bg-black bg-opacity-20 inset-0"
         >
           <div className="w-[95%] space-y-5 rounded-lg flex flex-col items-center justify-center bg-white py-6 px-4 sm:w-[350px] inset-0 m-auto absolute h-fit">
-            <div className="text-red-500 font-medium">{`Check your email and accept login if available else disregard... within ${countdown} seconds`}</div>
+            <div className="text-red-500 font-medium">{`Check your email and accept login if available else disregard... within ${countdown} seconds...`}</div>
 
             <div
               onClick={() => {
